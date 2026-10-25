@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Igor Marques — Em construção</title>
+  <meta name="description" content="Igor Marques, designer de marca. Site em construção.">
+  <meta name="theme-color" content="#f4f3ef">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ecebe7;
+      --fg: #3a3a38;
+      --display: #4a4a47;
+      --muted: #8c8b87;
+      --accent: #b3b2ad;
+      --line: rgba(58, 58, 56, 0.10);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #161616;
+        --fg: #c9c8c4;
+        --display: #b8b7b3;
+        --muted: #73726f;
+        --accent: #4a4a48;
+        --line: rgba(201, 200, 196, 0.08);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    /* Topo */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 24px clamp(16px, 4vw, 48px);
+    }
+    .logo {
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+    .tag {
+      font-size: 13px;
+      color: var(--muted);
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    }
+
+    /* Bloco central */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(32px, 6vh, 64px);
+      padding: 32px 0;
+    }
+
+    .intro {
+      padding: 0 clamp(16px, 4vw, 48px);
+      max-width: 640px;
+    }
+    .intro p {
+      font-size: clamp(14px, 1.8vw, 18px);
+      letter-spacing: -0.01em;
+    }
+    .intro p + p { margin-top: 8px; color: var(--muted); }
+
+    /* Faixas em movimento */
+    .marquee {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .marquee + .marquee { border-top: 0; }
+    .track {
+      display: inline-flex;
+      animation: scroll 40s linear infinite;
+    }
+    .marquee.reverse .track { animation-direction: reverse; }
+    .track span {
+      font-size: clamp(40px, 9vw, 120px);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      padding-right: 0.5em;
+      color: var(--display);
+    }
+    .track span::after {
+      content: "*";
+      margin-left: 0.5em;
+      color: var(--accent);
+    }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .track { animation: none; }
+    }
+
+    /* Rodapé */
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px 24px;
+      padding: 24px clamp(16px, 4vw, 48px);
+      font-size: 14px;
+    }
+    .contact {
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 2px;
+      transition: opacity .2s;
+    }
+    .contact:hover { opacity: .6; }
+    .links { display: flex; gap: 20px; }
+    .links a { text-decoration: none; color: var(--muted); transition: color .2s; }
+    .links a:hover { color: var(--fg); }
+    .year { color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="logo" href="/">Igor Marques</a>
+    <span class="tag">/em construção/</span>
+  </header>
+
+  <main>
+    <div aria-hidden="true">
+      <div class="marquee">
+        <div class="track">
+          <span>Página em construção</span><span>Página em construção</span><span>Página em construção</span>
+          <span>Página em construção</span><span>Página em construção</span><span>Página em construção</span>
+        </div>
+      </div>
+      <div class="marquee reverse">
+        <div class="track">
+          <span>Under construction</span><span>Under construction</span><span>Under construction</span>
+          <span>Under construction</span><span>Under construction</span><span>Under construction</span>
+        </div>
+      </div>
+    </div>
+    <p class="sr-only" style="position:absolute;left:-9999px">Página em construção.</p>
+
+    <div class="intro">
+      <p>Design de marca para empresas em momento de crescimento.</p>
+      <p>Um novo site está sendo desenhado. Enquanto isso, vamos conversar.</p>
+    </div>
+  </main>
+
+  <footer>
+    <a class="contact" href="mailto:igormfeliciano@gmail.com">igormfeliciano@gmail.com →</a>
+    <nav class="links">
+      <a href="https://wa.me/5531992691798" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.behance.net/igormarquesfeliciano" target="_blank" rel="noopener">Behance</a>
+      <a href="https://www.linkedin.com/in/igor-marques-a46768268" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <span class="year">© <span id="y">2026</span></span>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
