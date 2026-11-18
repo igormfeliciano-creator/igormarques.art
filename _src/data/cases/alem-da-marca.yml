@@ -1,0 +1,76 @@
+# Case do Além da Marca (conteúdo vindo do case no Behance, publicado em 4/nov/2026).
+# Uma lista dentro de "images" ([a, b]) coloca as imagens lado a lado (no celular, uma embaixo da outra).
+images:
+  - alem-da-marca-01
+  - alem-da-marca-02
+  - alem-da-marca-03
+  - alem-da-marca-04
+  - alem-da-marca-05
+  - alem-da-marca-06
+  - alem-da-marca-07
+  - alem-da-marca-08
+  - alem-da-marca-09
+  - alem-da-marca-10
+  - alem-da-marca-11
+  - alem-da-marca-12
+  - alem-da-marca-13
+  - [alem-da-marca-14, alem-da-marca-15]
+  - alem-da-marca-16
+  - alem-da-marca-17
+  - alem-da-marca-18
+  - alem-da-marca-19
+  - alem-da-marca-20
+  - [alem-da-marca-21, alem-da-marca-22]
+others: [zoppy, plano-perfeito-black-friday]
+pt:
+  tags: [Identidade Visual, Submarca, Editorial]
+  subtitle: Selo de conteúdo da Zoppy.
+  intro: >-
+    Identidade visual do Além da Marca, o selo que assina os podcasts, a newsletter e os vídeos da Zoppy para o varejo
+    brasileiro. A Zoppy produz conteúdo para o varejista em vários formatos, como podcasts, newsletter, vídeos editoriais
+    e anúncios. Faltava uma assinatura que reunisse tudo isso sob o mesmo nome, com identidade própria, mas sem se afastar
+    da marca principal. A resposta foi um símbolo que muda de sinal conforme o formato do conteúdo, sem deixar de ser a
+    mesma marca.
+  facts:
+    - { label: Cliente, values: [Zoppy] }
+    - { label: Local, values: [Belo Horizonte, MG] }
+    - { label: Projeto, values: [Identidade visual, Submarca, Aplicações] }
+    - { label: Equipe, values: [Igor Marques] }
+  sections:
+    - after: 2
+      title: Construção e conceito
+      text: >-
+        O símbolo une uma letra de traço caligráfico, o m de marca, a um sinal rígido ao redor. O contraste entre os dois
+        resume o selo, o lado autoral do conteúdo dentro de uma estrutura organizada. A marca continua a mesma, e o sinal
+        ao redor do m diz o que você vai encontrar.
+    - after: 12
+      title: Estilo
+      text: >-
+        Uma marca de conteúdo vive no dia a dia de quem produz. Por isso as aplicações começam na mesa de trabalho e
+        terminam na tela de quem assiste, lê e ouve.
+en:
+  tags: [Visual Identity, Sub-brand, Editorial]
+  subtitle: Zoppy's content label.
+  intro: >-
+    Visual identity for Além da Marca ("Beyond the Brand"), the label behind Zoppy's podcasts, newsletter and videos for
+    Brazilian retail. Zoppy creates content for retailers in many formats, including podcasts, a newsletter, editorial
+    videos and ads. What was missing was a signature that brought it all under one name, with an identity of its own but
+    close to the main brand. The answer was a symbol that changes its sign with each content format while remaining the
+    same brand.
+  facts:
+    - { label: Client, values: [Zoppy] }
+    - { label: Location, values: [Belo Horizonte, Brazil] }
+    - { label: Project, values: [Visual identity, Sub-brand, Applications] }
+    - { label: Team, values: [Igor Marques] }
+  sections:
+    - after: 2
+      title: Construction and concept
+      text: >-
+        The symbol joins a calligraphic letter, the m for "marca" (brand), with a rigid sign around it. The contrast
+        between them sums up the label, the authorial side of content inside an organized structure. The brand stays the
+        same, and the sign around the m tells you what you're about to find.
+    - after: 12
+      title: Style
+      text: >-
+        A content brand lives in the day to day of the people who make it. That's why the applications start at the work
+        desk and end on the screen of whoever is watching, reading and listening.

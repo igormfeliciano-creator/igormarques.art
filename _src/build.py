@@ -79,10 +79,13 @@ def build_images():
     IMG_OUT.mkdir(parents=True, exist_ok=True)
     meta = image_meta()
     for src in sorted(IMG_SRC.glob('*')):
-        if src.suffix.lower() not in ('.jpg', '.jpeg', '.png', '.webp'):
+        if src.suffix.lower() not in ('.jpg', '.jpeg', '.png', '.webp', '.gif'):
             continue
         name = src.stem
         im = Image.open(src)
+        if getattr(im, 'n_frames', 1) > 1:
+            build_animation(im, name, meta)
+            continue
         has_alpha = im.mode in ('RGBA', 'LA') or 'transparency' in im.info
         im = im.convert('RGBA' if has_alpha else 'RGB')
         w, h = im.size
@@ -98,6 +101,24 @@ def build_images():
         meta[name] = {'w': w, 'h': h, 'sizes': sizes, 'alpha': has_alpha}
         print(f'img  {name}: {w}x{h} -> {sizes}')
     (IMG_OUT / 'meta.json').write_text(json.dumps(meta, indent=1))
+
+def build_animation(im, name, meta):
+    """GIF animado vira WebP animado (bem menor), nas larguras 960 e 1440."""
+    from PIL import Image, ImageSequence
+    w, h = im.size
+    frames, durations = [], []
+    for fr in ImageSequence.Iterator(im):
+        frames.append(fr.convert('RGB'))
+        durations.append(fr.info.get('duration', 80))
+    sizes = []
+    for target in (960, 1440):
+        tw = min(target, w); th = round(h * tw / w)
+        out = [f.resize((tw, th), Image.LANCZOS) for f in frames]
+        out[0].save(IMG_OUT / f'{name}-{tw}.webp', 'WEBP', save_all=True, append_images=out[1:],
+                    duration=durations, loop=0, quality=80, method=6)
+        sizes.append(tw)
+    meta[name] = {'w': w, 'h': h, 'sizes': sizes, 'alpha': False}
+    print(f'anim {name}: {w}x{h} {len(frames)} quadros -> {sizes}')
 
 def picture(name, alt='', sizes='100vw', cls='', eager=False):
     meta = image_meta().get(name)
@@ -141,7 +162,8 @@ def main():
     strings = {'pt': load('pt.yml'), 'en': load('en.yml')}
     env = Environment(loader=FileSystemLoader(SRC / 'templates'), autoescape=select_autoescape(['html']),
                       trim_blocks=True, lstrip_blocks=True)
-    env.globals.update(icon=icon, logo_svg=logo_svg, picture=picture, site=site, projects=projects)
+    env.globals.update(image_ratio=lambda n: round(image_meta()[n]['w'] / image_meta()[n]['h'], 4) if n in image_meta() else 1,
+                       icon=icon, logo_svg=logo_svg, picture=picture, site=site, projects=projects)
     for tpl, pt_path, en_path, extra in pages(projects, strings):
         for lang, path in (('pt', pt_path), ('en', en_path)):
             prefix = '/' if lang == 'pt' else '/en/'

@@ -25,7 +25,7 @@
   tags: { pt: [Marca do Zero, Identidade Visual], en: [Brand from Scratch, Visual Identity] }
 - slug: alem-da-marca
   title: Além da Marca
-  url: https://www.behance.net/gallery/258055961/Alm-da-Marca
+  case: true
   image: card-alem-da-marca
   thumbs: [card-alem-da-marca-thumb-1, card-alem-da-marca-thumb-2, card-alem-da-marca-thumb-3, card-alem-da-marca-thumb-4, card-alem-da-marca-thumb-5]
   filters: [do-zero, identidade]

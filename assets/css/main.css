@@ -256,6 +256,8 @@ main { display: flex; flex-direction: column; gap: 10px; }
 /* imagens do case: proporção original, sem corte */
 .case-img { margin: 0; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-subtle); }
 .case-img .img { height: auto; }
+.case-row { display: flex; gap: 10px; }
+.case-row .case-img { min-width: 0; }
 
 /* ---------- "Vamos construir algo juntos?" + projetos ---------- */
 .build { padding: 48px; display: flex; flex-direction: column; gap: 8px; }
@@ -354,6 +356,7 @@ main { display: flex; flex-direction: column; gap: 10px; }
   .photo-card, .photo-card--short { min-height: 0; height: 200px; }
   .photo-card__bar { left: 24px; right: 24px; bottom: 24px; }
   .fact { padding: 24px; }
+  .case-row { flex-direction: column; }
   .fact dt { font-size: var(--fs-body-lg); }
   .build { padding: 12px; }
   .build__info { padding: 24px; }

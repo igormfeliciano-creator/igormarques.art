@@ -17,7 +17,13 @@
   </dl>
 </section>
 {% for img in case.images %}
+{% if img is string %}
 <figure class="case-img" data-reveal>{{ picture(img, project.title ~ ' — ' ~ loop.index, '(max-width: 1440px) 100vw, 1416px') }}</figure>
+{% else %}
+<div class="case-row" data-reveal>
+  {% for sub in img %}<figure class="case-img" style="flex: {{ image_ratio(sub) }} 1 0">{{ picture(sub, project.title, '(max-width: 768px) 100vw, 50vw') }}</figure>{% endfor %}
+</div>
+{% endif %}
 {% for sec in c.sections if sec.after == loop.index %}
 <section class="split split--center">
   <div class="split__info" data-reveal><h2 class="display">{{ sec.title }}</h2></div>
