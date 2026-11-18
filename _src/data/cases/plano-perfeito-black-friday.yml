@@ -28,6 +28,8 @@ pt:
     Store e uma das vozes mais influentes do empreendedorismo no Brasil, transmitido ao vivo no YouTube para lojistas de
     todo o país.
   facts:
+    - { label: Cliente, values: [Zoppy] }
+    - { label: Ano, values: ["2026"] }
     - { label: Projeto, values: [Identidade visual, Evento presencial e online, Landing page] }
     - { label: Equipe, values: [Igor Marques] }
   sections:
@@ -56,6 +58,8 @@ en:
     created to change that, with an in-person event featuring a free class by Letícia Vaz, founder of Letícia Vaz Store
     and one of Brazil's most influential business voices, streamed live on YouTube to store owners nationwide.
   facts:
+    - { label: Client, values: [Zoppy] }
+    - { label: Year, values: ["2026"] }
     - { label: Project, values: [Visual identity, In-person and online event, Landing page] }
     - { label: Team, values: [Igor Marques] }
   sections:
