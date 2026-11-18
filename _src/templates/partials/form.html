@@ -1,0 +1,114 @@
+{#- Formulário de contato em 3 etapas + confirmação (componente Form do Figma).
+    `uid` evita ids repetidos quando o form aparece duas vezes na mesma página. -#}
+{% from 'partials/macros.html' import socials %}
+
+{% macro field(uid, name, label, ph, f, type='text', required=False, optional=False, autocomplete='', inputmode='', help='', maxlength=120) -%}
+<div class="input{{ ' input--textarea' if type == 'textarea' }}" data-field>
+  <label class="input__head" for="{{ uid }}-{{ name }}">
+    <span class="input__label">{{ label }}</span>
+    {% if optional %}<span class="input__optional">{{ f.optional }}</span>{% endif %}
+  </label>
+  <div class="input__control">
+    {% if type == 'textarea' %}
+    <textarea id="{{ uid }}-{{ name }}" name="{{ name }}" placeholder="{{ ph }}" maxlength="{{ maxlength }}" rows="6"></textarea>
+    {% else %}
+    <input id="{{ uid }}-{{ name }}" name="{{ name }}" type="{{ type }}" placeholder="{{ ph }}" maxlength="{{ maxlength }}"
+           {%- if required %} required{% endif %}{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if inputmode %} inputmode="{{ inputmode }}"{% endif %}>
+    <span class="input__icon input__icon--ok">{{ icon('check') }}</span>
+    <span class="input__icon input__icon--error">{{ icon('erro') }}</span>
+    {% endif %}
+  </div>
+  <p class="input__help" data-help data-default="{{ help }}">{{ help }}</p>
+</div>
+{%- endmacro %}
+
+{% macro select(uid, name, label, opts, f, optional=False) -%}
+<div class="input input--select" data-field>
+  <label class="input__head" for="{{ uid }}-{{ name }}">
+    <span class="input__label">{{ label }}</span>
+    {% if optional %}<span class="input__optional">{{ f.optional }}</span>{% endif %}
+  </label>
+  <div class="input__control">
+    <select id="{{ uid }}-{{ name }}" name="{{ name }}">
+      <option value="">{{ f.select_placeholder }}</option>
+      {% for o in opts %}<option>{{ o }}</option>{% endfor %}
+    </select>
+    <span class="input__icon input__icon--select">{{ icon('chevron') }}</span>
+  </div>
+  <p class="input__help" data-help data-default=""></p>
+</div>
+{%- endmacro %}
+
+{% macro choices(uid, name, label, opts, required=False) -%}
+<fieldset class="choices" data-field{% if required %} data-required{% endif %}>
+  <legend class="input__head"><span class="input__label">{{ label }}</span></legend>
+  <div class="choices__opts">
+    {% for o in opts %}
+    <label class="choice"><input type="radio" name="{{ name }}" value="{{ o }}"><span class="tag tag--black">{{ o }}</span></label>
+    {% endfor %}
+  </div>
+  <p class="input__help" data-help data-default=""></p>
+</fieldset>
+{%- endmacro %}
+
+{% macro contact_form(t, uid='form') -%}
+{% set f = t.form %}
+<form class="form" data-form data-endpoint="{{ site.form_endpoint }}" novalidate
+      data-msg-required="{{ f.required_error }}" data-msg-email="{{ f.email_error }}"
+      data-msg-phone="{{ f.phone_error }}" data-msg-choice="{{ f.choice_error }}" data-msg-send="{{ f.send_error }}">
+  <input type="hidden" name="idioma" value="{{ t.lang_attr }}">
+  <input type="hidden" name="pagina" value="">
+  <div class="form__hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+  <fieldset class="form__step" data-step="1">
+    <legend class="form__title">{{ f.step1.title }}</legend>
+    <hr class="divisor">
+    {{ field(uid, 'nome', f.step1.name, f.step1.name_ph, f, required=True, autocomplete='name') }}
+    <div class="form__row">
+      {{ field(uid, 'email', f.step1.email, f.step1.email_ph, f, type='email', required=True, autocomplete='email', inputmode='email') }}
+      {{ field(uid, 'whatsapp', f.step1.phone, f.step1.phone_ph, f, type='tel', required=True, autocomplete='tel', inputmode='tel', maxlength=25) }}
+    </div>
+    {{ field(uid, 'marca', f.step1.brand, f.step1.brand_ph, f, autocomplete='organization') }}
+    <hr class="divisor">
+    {{ field(uid, 'site', f.step1.site, f.step1.site_ph, f, optional=True) }}
+    <button class="botao-primario" type="button" data-next><span>{{ f.step1.next }}</span>{{ icon('seta-direita') }}</button>
+  </fieldset>
+
+  <fieldset class="form__step" data-step="2" hidden>
+    <legend class="form__title">{{ f.step2.title }}</legend>
+    <hr class="divisor">
+    {{ choices(uid, 'busca', f.step2.goal, f.step2.goal_opts, required=True) }}
+    {{ choices(uid, 'momento', f.step2.stage, f.step2.stage_opts) }}
+    <hr class="divisor">
+    {{ field(uid, 'segmento', f.step2.segment, f.step2.segment_ph, f) }}
+    {{ select(uid, 'necessidade', f.step2.need, f.step2.need_opts, f) }}
+    {{ choices(uid, 'prazo', f.step2.when, f.step2.when_opts) }}
+    <hr class="divisor">
+    <button class="botao-primario" type="button" data-next><span>{{ f.step2.next }}</span>{{ icon('seta-direita') }}</button>
+    <button class="form__back" type="button" data-back>{{ f.step2.back }}</button>
+  </fieldset>
+
+  <fieldset class="form__step" data-step="3" hidden>
+    <legend class="form__title">{{ f.step3.title }}</legend>
+    <hr class="divisor">
+    {{ choices(uid, 'investimento', f.step3.budget, f.step3.budget_opts) }}
+    {{ select(uid, 'origem', f.step3.source, f.step3.source_opts, f, optional=True) }}
+    {{ field(uid, 'detalhes', f.step3.details, f.step3.details_ph, f, type='textarea', optional=True, help=f.step3.details_help, maxlength=300) }}
+    <hr class="divisor">
+    <p class="form__privacy">{{ f.privacy }}</p>
+    <button class="botao-primario" type="submit"><span>{{ f.step3.send }}</span>{{ icon('seta-direita') }}</button>
+    <button class="form__back" type="button" data-back>{{ f.step3.back }}</button>
+    <p class="form__error" data-send-error role="alert" hidden></p>
+  </fieldset>
+
+  <div class="form__progress" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <div class="form__sent" data-sent hidden tabindex="-1">
+    <span class="form__sent-icon">{{ icon('check') }}</span>
+    <p class="form__sent-title">{{ f.sent.title }}</p>
+    <p class="form__sent-text">{{ f.sent.text }}</p>
+    {{ socials('black') }}
+    <button class="form__again" type="button" data-again>{{ f.sent.again }}</button>
+  </div>
+</form>
+{%- endmacro %}

@@ -1,0 +1,167 @@
+/* igormarques.art — interações (sem dependências) */
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- imagens: fade quando carregam ---------- */
+  document.querySelectorAll('img.img').forEach(function (img) {
+    if (img.complete && img.naturalWidth) img.classList.add('is-loaded');
+    else img.addEventListener('load', function () { img.classList.add('is-loaded'); }, { once: true });
+  });
+
+  /* ---------- seções aparecem uma vez ao entrar na tela ---------- */
+  function startReveal() {
+    var items = document.querySelectorAll('[data-reveal]');
+    if (reduce || !('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('is-visible'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  }
+  if (document.documentElement.classList.contains('is-loading')) document.addEventListener('loader:done', startReveal, { once: true });
+  else startReveal();
+
+  /* ---------- navbar compacta ao rolar ---------- */
+  var nav = document.querySelector('[data-navbar]');
+  if (nav) {
+    var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 80); };
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  }
+
+  /* ---------- menus (hambúrguer) ---------- */
+  var menus = document.querySelectorAll('[data-menu]');
+  function setMenu(m, open) {
+    var btn = m.querySelector('.menu__toggle');
+    m.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? btn.dataset.labelClose : btn.dataset.labelOpen);
+  }
+  menus.forEach(function (m) {
+    m.querySelector('.menu__toggle').addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      var open = !m.classList.contains('is-open');
+      menus.forEach(function (o) { if (o !== m) setMenu(o, false); });
+      setMenu(m, open);
+    });
+  });
+  document.addEventListener('click', function (ev) { menus.forEach(function (m) { if (!m.contains(ev.target)) setMenu(m, false); }); });
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') menus.forEach(function (m) { setMenu(m, false); }); });
+
+  /* ---------- popup do formulário ---------- */
+  var dialog = document.querySelector('[data-form-dialog]');
+  if (dialog) {
+    document.querySelectorAll('[data-open-form]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open', '');
+        document.documentElement.classList.add('has-dialog');
+      });
+    });
+    var close = function () { dialog.close ? dialog.close() : dialog.removeAttribute('open'); };
+    dialog.querySelectorAll('[data-close-form]').forEach(function (b) { b.addEventListener('click', close); });
+    dialog.addEventListener('click', function (ev) { if (ev.target === dialog) close(); });
+    dialog.addEventListener('close', function () { document.documentElement.classList.remove('has-dialog'); });
+  }
+
+  /* ---------- formulário em etapas ---------- */
+  document.querySelectorAll('[data-form]').forEach(initForm);
+
+  function initForm(form) {
+    var steps = Array.prototype.slice.call(form.querySelectorAll('[data-step]'));
+    var sent = form.querySelector('[data-sent]');
+    var sendError = form.querySelector('[data-send-error]');
+    var msg = form.dataset;
+    var current = 1;
+    var lastSend = 0;
+    form.querySelector('[name=pagina]').value = location.pathname;
+
+    function show(n) {
+      current = n; form.dataset.current = n;
+      steps.forEach(function (s) { s.hidden = Number(s.dataset.step) !== n; });
+      var first = steps[n - 1].querySelector('legend');
+      if (first && form.getBoundingClientRect().top < 0) form.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    }
+    show(1);
+
+    function setState(field, state, text) {
+      field.classList.toggle('is-invalid', state === 'error');
+      field.classList.toggle('is-valid', state === 'ok');
+      var help = field.querySelector('[data-help]');
+      if (help) help.textContent = state === 'error' ? text : (help.dataset.default || '');
+    }
+
+    function check(field, strict) {
+      var input = field.querySelector('input:not([type=radio]), textarea, select');
+      if (field.matches('fieldset')) {
+        if (!field.hasAttribute('data-required')) return true;
+        var ok = !!field.querySelector('input:checked');
+        if (strict || ok) setState(field, ok ? 'none' : 'error', msg.msgChoice);
+        return ok;
+      }
+      if (!input) return true;
+      var v = input.value.trim();
+      if (!v) {
+        if (input.required) { if (strict) setState(field, 'error', msg.msgRequired); return false; }
+        setState(field, 'none'); return true;
+      }
+      var valid = true, text = msg.msgRequired;
+      if (input.type === 'email') { valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); text = msg.msgEmail; }
+      if (input.type === 'tel') { valid = v.replace(/\D/g, '').length >= 10; text = msg.msgPhone; }
+      if (input.tagName === 'SELECT' || input.tagName === 'TEXTAREA') { setState(field, 'none'); return true; }
+      setState(field, valid ? 'ok' : 'error', text);
+      return valid;
+    }
+
+    form.querySelectorAll('[data-field]').forEach(function (field) {
+      field.addEventListener('focusout', function (ev) {
+        if (field.matches('fieldset') && field.contains(ev.relatedTarget)) return;
+        check(field, false);
+      });
+      field.addEventListener('input', function () { if (field.classList.contains('is-invalid')) check(field, false); });
+      field.addEventListener('change', function () { if (field.matches('fieldset')) check(field, false); });
+      var sel = field.querySelector('select');
+      if (sel) { var upd = function () { sel.classList.toggle('is-empty', !sel.value); }; sel.addEventListener('change', upd); upd(); }
+    });
+
+    function validStep(n) {
+      var ok = true, firstBad = null;
+      steps[n - 1].querySelectorAll('[data-field]').forEach(function (f) {
+        if (!check(f, true)) { ok = false; firstBad = firstBad || f; }
+      });
+      if (firstBad) { var el = firstBad.querySelector('input, textarea, select'); if (el) el.focus(); }
+      return ok;
+    }
+
+    form.querySelectorAll('[data-next]').forEach(function (b) { b.addEventListener('click', function () { if (validStep(current)) show(current + 1); }); });
+    form.querySelectorAll('[data-back]').forEach(function (b) { b.addEventListener('click', function () { show(current - 1); }); });
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      if (!validStep(current)) return;
+      if (Date.now() - lastSend < 30000) return; // evita envios repetidos
+      sendError.hidden = true;
+      form.classList.add('is-sending');
+      var data = new FormData(form);
+      var body = new URLSearchParams();
+      data.forEach(function (v, k) { body.append(k, v); });
+      var endpoint = form.dataset.endpoint;
+      var req = endpoint
+        ? fetch(endpoint, { method: 'POST', body: body, mode: 'no-cors' })
+        : new Promise(function (r) { setTimeout(r, 600); }); // sem endereço configurado: só simula
+      req.then(function () {
+        lastSend = Date.now();
+        steps.forEach(function (s) { s.hidden = true; });
+        form.classList.add('is-sent');
+        sent.hidden = false; sent.focus();
+      }).catch(function () {
+        sendError.textContent = msg.msgSend; sendError.hidden = false;
+      }).then(function () { form.classList.remove('is-sending'); });
+    });
+
+    form.querySelector('[data-again]').addEventListener('click', function () {
+      form.reset();
+      form.querySelectorAll('[data-field]').forEach(function (f) { setState(f, 'none'); var s = f.querySelector('select'); if (s) s.classList.add('is-empty'); });
+      form.classList.remove('is-sent'); sent.hidden = true; show(1);
+      var first = form.querySelector('input:not([type=hidden]):not([name=website])'); if (first) first.focus();
+    });
+  }
+})();

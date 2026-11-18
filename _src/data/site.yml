@@ -1,0 +1,10 @@
+# Configurações gerais do site
+url: https://igormarques.art
+# Endereço do Google Apps Script que recebe o formulário (preencher depois de implantar)
+form_endpoint: ""
+social:
+  - { name: Instagram, icon: instagram, url: "#" }
+  - { name: YouTube, icon: youtube, url: "#" }
+  - { name: LinkedIn, icon: linkedin, url: "#" }
+  - { name: Behance, icon: behance, url: "#" }
+  - { name: TikTok, icon: tiktok, url: "#" }

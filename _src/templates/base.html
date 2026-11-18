@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ t.lang_attr }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ t.meta.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ t.meta.description }}{% endblock %}">
+  <link rel="canonical" href="{{ site.url }}{{ alt_pt if lang == 'pt' else alt_en }}">
+  <link rel="alternate" hreflang="pt-BR" href="{{ site.url }}{{ alt_pt }}">
+  <link rel="alternate" hreflang="en" href="{{ site.url }}{{ alt_en }}">
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ alt_pt }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.description() }}">
+  <meta property="og:locale" content="{{ 'pt_BR' if lang == 'pt' else 'en_US' }}">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>
+    /* a loadscreen toca uma vez por visita (aba); quem já viu nesta aba vai direto ao conteúdo */
+    try { if (sessionStorage.getItem('ima-loader')) document.documentElement.classList.add('no-loader'); } catch (e) {}
+    document.documentElement.classList.add('js');
+  </script>
+</head>
+<body class="page-{{ page }}">
+  {% include 'partials/loader.html' %}
+  <a class="skip-link" href="#conteudo">{{ 'Pular para o conteúdo' if lang == 'pt' else 'Skip to content' }}</a>
+  <div class="page">
+    {% include 'partials/navbar.html' %}
+    <main id="conteudo">
+      {% block content %}{% endblock %}
+    </main>
+    {% include 'partials/footer.html' %}
+  </div>
+  {% block after %}{% endblock %}
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

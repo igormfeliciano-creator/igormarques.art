@@ -1,0 +1,18 @@
+{% from 'partials/macros.html' import menu %}
+<header class="navbar" data-navbar>
+  <div class="navbar__inner">
+    <a class="navbar__logo" href="{{ prefix }}" aria-label="{{ t.nav.home }}">{{ logo_svg('logo') }}</a>
+    <nav class="navbar__links" aria-label="Menu">
+      <a class="nav-item{{ ' is-current' if page == 'projetos' }}" href="{{ prefix }}projetos/">{{ t.nav.projects }}</a>
+      <a class="nav-item{{ ' is-current' if page == 'sobre-mim' }}" href="{{ prefix }}sobre-mim/">{{ t.nav.about }}</a>
+      <a class="nav-item{{ ' is-current' if page == 'contato' }}" href="{{ prefix }}contato/">{{ t.nav.contact }}</a>
+    </nav>
+    <div class="navbar__actions">
+      {{ menu(t, 'black', 'nav-menu', links=True, prefix=prefix) }}
+      <div class="lang" role="group" aria-label="{{ t.nav.lang_label }}">
+        <a href="{{ alt_en }}" hreflang="en" lang="en"{% if lang == 'en' %} aria-current="true" class="is-active"{% endif %}>EN</a>
+        <a href="{{ alt_pt }}" hreflang="pt-BR" lang="pt-BR"{% if lang == 'pt' %} aria-current="true" class="is-active"{% endif %}>PT</a>
+      </div>
+    </div>
+  </div>
+</header>

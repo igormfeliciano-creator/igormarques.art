@@ -1,0 +1,230 @@
+{
+ "card-alem-da-marca-thumb-1": {
+  "w": 480,
+  "h": 320,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-alem-da-marca-thumb-2": {
+  "w": 360,
+  "h": 480,
+  "sizes": [
+   360
+  ],
+  "alpha": true
+ },
+ "card-alem-da-marca-thumb-3": {
+  "w": 320,
+  "h": 480,
+  "sizes": [
+   320
+  ],
+  "alpha": true
+ },
+ "card-alem-da-marca-thumb-4": {
+  "w": 480,
+  "h": 320,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-alem-da-marca-thumb-5": {
+  "w": 480,
+  "h": 360,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-alem-da-marca": {
+  "w": 2160,
+  "h": 1440,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": true
+ },
+ "card-libcode-thumb-1": {
+  "w": 480,
+  "h": 311,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-libcode-thumb-2": {
+  "w": 480,
+  "h": 201,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-libcode-thumb-3": {
+  "w": 480,
+  "h": 270,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-libcode-thumb-4": {
+  "w": 480,
+  "h": 334,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-libcode-thumb-5": {
+  "w": 480,
+  "h": 320,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-libcode": {
+  "w": 2160,
+  "h": 1397,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": true
+ },
+ "card-plano-perfeito-black-friday-thumb-1": {
+  "w": 480,
+  "h": 384,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-plano-perfeito-black-friday-thumb-2": {
+  "w": 480,
+  "h": 320,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-plano-perfeito-black-friday-thumb-3": {
+  "w": 480,
+  "h": 320,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-plano-perfeito-black-friday-thumb-4": {
+  "w": 480,
+  "h": 270,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-plano-perfeito-black-friday-thumb-5": {
+  "w": 480,
+  "h": 360,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-plano-perfeito-black-friday": {
+  "w": 2160,
+  "h": 1440,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": true
+ },
+ "card-zoppy-thumb-1": {
+  "w": 480,
+  "h": 320,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-zoppy-thumb-2": {
+  "w": 480,
+  "h": 360,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-zoppy-thumb-3": {
+  "w": 480,
+  "h": 360,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-zoppy-thumb-5": {
+  "w": 480,
+  "h": 320,
+  "sizes": [
+   480
+  ],
+  "alpha": true
+ },
+ "card-zoppy": {
+  "w": 2160,
+  "h": 1620,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": true
+ },
+ "home-hero": {
+  "w": 2880,
+  "h": 2160,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": true
+ },
+ "home-sobre-foto": {
+  "w": 2160,
+  "h": 1440,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": true
+ },
+ "logo-tipografia-a": {
+  "w": 1500,
+  "h": 1000,
+  "sizes": [
+   480,
+   960,
+   1440
+  ],
+  "alpha": true
+ }
+}

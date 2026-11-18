@@ -1,0 +1,79 @@
+lang_attr: en
+meta:
+  title: Igor Marques Art — Brand designer
+  description: Complete visual identities for businesses that want to be remembered. Portfolio of Igor Marques, brand designer and illustrator based in Belo Horizonte, Brazil.
+nav:
+  projects: Projects
+  about: About me
+  contact: Contact
+  menu_open: Open menu
+  menu_close: Close menu
+  home: Home
+  lang_label: Language
+home:
+  hero_alt: Featured project
+  projects_title: Projects
+  about_tag: About me
+  about_wordmark_alt: igor marques art.
+  about_p1: I'm Igor, a brand designer and illustrator based in Belo Horizonte, Brazil. I create complete visual identities for businesses that want to be remembered, whether it's an idea leaving the page or a company ready for its next step. Every visual decision has a reason, and every brand is built to work day to day.
+  about_p2: Drawing came before design. I trained as a visual arts technician, and to this day my ideas start on paper. I've worked in design since 2020, across product, campaigns and branding, always looking for the same balance of strategy, sensitivity and technical rigor.
+  about_photo_alt: Portrait of Igor Marques
+  about_more: More about me
+  cta_title: Shall we create something together?
+  cta_text: Tell me about you and your project through the form. I'll get back to you and we'll set up a call to understand where you are, your goals and what your brand needs. From there, I'll put together a proposal tailored to you.
+card:
+  open: Open project
+footer:
+  rights: All rights reserved to Igor Marques Art.®
+  year: 2026®
+form:
+  optional: (optional)
+  required_error: Please fill in this field.
+  email_error: Check your email, something seems to be missing.
+  phone_error: Check the number, including the area code.
+  choice_error: Choose an option.
+  select_placeholder: Select an option
+  privacy: Your details are only used to reply to you.
+  send_error: Couldn't send right now. Try again in a moment or reach me on social media.
+  step1:
+    title: Tell me a bit about yourself.
+    name: Your name *
+    name_ph: Your full name
+    email: Your best email *
+    email_ph: you@email.com
+    phone: Your WhatsApp *
+    phone_ph: +1 (000) 000-0000
+    brand: Your brand or company name
+    brand_ph: Your brand name
+    site: Your brand's Instagram or website
+    site_ph: yourbrand.com or @yourbrand
+    next: Continue
+  step2:
+    title: "Now, about your project:"
+    goal: What are you looking for? *
+    goal_opts: [A brand from scratch, Refresh my brand, Not sure yet]
+    stage: What stage is your business at?
+    stage_opts: [Not launched yet, Up to 1 year, 1 to 3 years, Over 3 years]
+    segment: What industry?
+    segment_ph: "E.g. fashion, food, technology"
+    need: What do you need?
+    need_opts: [Complete visual identity, Rebranding, Brand guidelines, Web design system, Not sure yet]
+    when: When do you need it?
+    when_opts: [No rush, Within 2 months, Within 1 month, I have a specific date]
+    next: Continue
+    back: Back
+  step3:
+    title: Almost there
+    budget: How much do you plan to invest?
+    budget_opts: [Up to R$ 2k, R$ 2k to R$ 5k, R$ 5k to R$ 10k, Over R$ 10k, I'd rather talk]
+    source: How did you find me?
+    source_opts: [Instagram, Google, YouTube, Referral, I asked an AI, I don't remember]
+    details: Tell me more about the project
+    details_ph: Tell me a bit about your project…
+    details_help: Up to 300 characters
+    send: Send
+    back: Back
+  sent:
+    title: Your answers have been sent!
+    text: I'll get back to you as soon as I can. Talk soon!
+    again: Fill in again

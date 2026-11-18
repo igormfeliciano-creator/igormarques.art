@@ -1,0 +1,16 @@
+{% from 'partials/macros.html' import menu %}
+<footer class="footer" data-reveal>
+  <div class="footer__top">
+    <a class="footer__logo" href="{{ prefix }}" aria-label="{{ t.nav.home }}">{{ logo_svg('logo') }}</a>
+    <nav class="footer__links" aria-label="Rodapé">
+      <a class="nav-item nav-item--white" href="{{ prefix }}projetos/">{{ t.nav.projects }}</a>
+      <a class="nav-item nav-item--white" href="{{ prefix }}sobre-mim/">{{ t.nav.about }}</a>
+      <a class="nav-item nav-item--white" href="{{ prefix }}contato/">{{ t.nav.contact }}</a>
+    </nav>
+    {{ menu(t, 'white', 'footer-menu') }}
+  </div>
+  <div class="footer__bottom">
+    <p>{{ t.footer.rights }}</p>
+    <p class="footer__year">{{ t.footer.year }}</p>
+  </div>
+</footer>

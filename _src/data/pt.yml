@@ -1,0 +1,79 @@
+lang_attr: pt-BR
+meta:
+  title: Igor Marques Art — Designer de marcas
+  description: Identidades visuais completas para negócios que querem ser lembrados. Portfólio de Igor Marques, designer de marcas e ilustrador em Belo Horizonte.
+nav:
+  projects: Projetos
+  about: Sobre mim
+  contact: Contato
+  menu_open: Abrir menu
+  menu_close: Fechar menu
+  home: Página inicial
+  lang_label: Idioma
+home:
+  hero_alt: Projeto em destaque
+  projects_title: Projetos
+  about_tag: Sobre mim
+  about_wordmark_alt: igor marques art.
+  about_p1: Sou o Igor, designer de marcas e ilustrador em Belo Horizonte. Crio identidades visuais completas para negócios que querem ser lembrados, seja uma ideia saindo do papel, seja uma empresa pronta para o próximo passo. Cada decisão visual tem um porquê, e cada marca nasce para funcionar no dia a dia.
+  about_p2: Antes do design veio o desenho. Fiz o técnico em Artes Visuais e, até hoje, é no papel que minhas ideias começam. Desde 2020 trabalho com design, passando por produto, campanhas e branding, sempre buscando o mesmo equilíbrio, estratégia, sensibilidade e rigor técnico.
+  about_photo_alt: Retrato de Igor Marques
+  about_more: Ver mais sobre mim
+  cta_title: Vamos criar algo juntos?
+  cta_text: Me conte sobre você e o seu projeto pelo formulário. Eu retorno o contato e marcamos uma conversa para entender o seu momento, os seus objetivos e o que a sua marca precisa. A partir disso, preparo um orçamento sob medida para você.
+card:
+  open: Abrir projeto
+footer:
+  rights: Todos os direitos reservados a Igor Marques Art.®
+  year: 2026®
+form:
+  optional: (opcional)
+  required_error: Preencha este campo.
+  email_error: Confira o e-mail, parece que falta algo.
+  phone_error: Confira o número com DDD.
+  choice_error: Escolha uma opção.
+  select_placeholder: Selecione uma opção
+  privacy: Seus dados servem só para eu responder o seu contato.
+  send_error: Não foi possível enviar agora. Tente de novo em instantes ou me chame pelas redes.
+  step1:
+    title: Me conte um pouco sobre você.
+    name: Seu nome *
+    name_ph: Seu nome completo
+    email: Seu melhor e-mail *
+    email_ph: voce@email.com
+    phone: Seu WhatsApp *
+    phone_ph: +55 (00) 00000-0000
+    brand: Nome da sua marca ou empresa
+    brand_ph: Nome da sua marca
+    site: Instagram ou site da sua marca
+    site_ph: suamarca.com.br ou @suamarca
+    next: Continuar
+  step2:
+    title: "Agora, sobre o seu projeto:"
+    goal: O que você está buscando? *
+    goal_opts: [Uma marca do zero, Renovar minha marca, Ainda não sei]
+    stage: Em que momento está o seu negócio?
+    stage_opts: [Ainda vai nascer, Até 1 ano, De 1 a 3 anos, Mais de 3 anos]
+    segment: Qual segmento?
+    segment_ph: "Ex.: moda, alimentação, tecnologia"
+    need: Do que você precisa?
+    need_opts: [Identidade visual completa, Rebranding, Manual de marca, Design system para web, Ainda não sei]
+    when: Para quando você precisa?
+    when_opts: [Sem pressa, Em até 2 meses, Em até 1 mês, Tenho uma data específica]
+    next: Continuar
+    back: Voltar
+  step3:
+    title: Quase lá
+    budget: Quanto você pretende investir?
+    budget_opts: [Até R$ 2 mil, R$ 2 mil a R$ 5 mil, R$ 5 mil a R$ 10 mil, Acima de R$ 10 mil, Prefiro conversar]
+    source: Por onde você me conheceu?
+    source_opts: [Instagram, Google, YouTube, Indicação, Perguntei para a IA, Não me lembro]
+    details: Conte mais sobre o projeto
+    details_ph: Conte um pouco sobre o seu projeto…
+    details_help: Até 300 caracteres
+    send: Enviar
+    back: Voltar
+  sent:
+    title: Suas respostas foram enviadas!
+    text: Entrarei em contato assim que puder. Até breve!
+    again: Preencher novamente

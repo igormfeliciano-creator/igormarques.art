@@ -1,0 +1,67 @@
+/* Tokens do Figma (coleções Primitivas e Tokens). Mantenha os nomes iguais aos do Figma. */
+:root {
+  /* primitivas */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-50: #f2f2f2;
+  --color-gray-200: #cccccc;
+  --color-gray-400: #999999;
+  --color-gray-600: #666666;
+  --color-gray-800: #333333;
+  --color-gray-950: #0d0d0d;
+  --color-green-500: #1ac820;
+  --color-red-500: #e11515;
+  --color-white-alpha-60: rgba(255, 255, 255, .6);
+  --color-white-alpha-40: rgba(255, 255, 255, .4);
+  --color-white-alpha-20: rgba(255, 255, 255, .2);
+  --color-black-alpha-60: rgba(0, 0, 0, .6);
+  --color-black-alpha-40: rgba(0, 0, 0, .4);
+
+  /* superfícies */
+  --surface-page: var(--color-white);
+  --surface-inverse: var(--color-black);
+  --surface-subtle: var(--color-gray-50);
+  --surface-overlay: var(--color-black-alpha-60);
+  /* texto */
+  --text-primary: var(--color-black);
+  --text-secondary: var(--color-gray-600);
+  --text-muted: var(--color-gray-400);
+  --text-subtle: var(--color-gray-200);
+  --text-inverse: var(--color-white);
+  --text-inverse-secondary: var(--color-white-alpha-60);
+  --text-inverse-muted: var(--color-white-alpha-40);
+  --text-inverse-subtle: var(--color-white-alpha-20);
+  /* bordas e feedback */
+  --border-default: var(--color-gray-200);
+  --border-inverse: var(--color-white-alpha-20);
+  --feedback-success: var(--color-green-500);
+  --feedback-error: var(--color-red-500);
+  /* espaçamento */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 48px;
+  /* raios */
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  /* tipografia (text styles do Figma) */
+  --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fs-display: 62px;      /* Display/Large SemiBold */
+  --fs-card: 42px;         /* Heading/Card SemiBold */
+  --fs-subtitle: 42px;     /* Heading/Subtitle Regular */
+  --fs-heading-md: 32px;   /* Heading/Medium Regular */
+  --fs-heading-sm: 28px;   /* Heading/Small Medium */
+  --fs-body-lg: 20px;      /* Body/Large */
+  --fs-body-md: 18px;      /* Body/Medium */
+  --fs-body: 14px;         /* Body/Default */
+  --fs-body-sm: 12px;      /* Body/Small */
+  --fs-caption: 10px;      /* Caption */
+  /* movimento */
+  --ease-out: cubic-bezier(.22, .61, .36, 1);
+  --dur-fast: .2s;
+  --dur-base: .3s;
+  --dur-reveal: .6s;
+}

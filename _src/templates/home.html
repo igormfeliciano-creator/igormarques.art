@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import project_card, socials, tag %}
+{% from 'partials/form.html' import contact_form %}
+
+{% block content %}
+<section class="hero" aria-label="{{ t.home.hero_alt }}">
+  {{ picture('home-hero', t.home.hero_alt, '(max-width: 1440px) 100vw, 1416px', 'hero__img', eager=True) }}
+</section>
+
+<section class="projects" aria-labelledby="projetos-titulo">
+  <h2 id="projetos-titulo" class="visually-hidden">{{ t.home.projects_title }}</h2>
+  <div class="projects__grid">
+    {% for p in projects %}{{ project_card(p, lang, t, prefix) }}{% endfor %}
+  </div>
+</section>
+
+<section class="about" aria-labelledby="sobre-titulo">
+  <div class="about__photo" data-reveal>{{ picture('home-sobre-foto', t.home.about_photo_alt, '(max-width: 768px) 100vw, 600px') }}</div>
+  <div class="about__card" data-reveal>
+    <div class="about__content">
+      {{ tag(t.home.about_tag, 'white') }}
+      <h2 id="sobre-titulo" class="about__wordmark">{{ picture('logo-tipografia-a', t.home.about_wordmark_alt, '420px', 'about__wordmark-img') }}</h2>
+      <p>{{ t.home.about_p1 }}</p>
+      <p>{{ t.home.about_p2 }}</p>
+    </div>
+    <div class="about__footer">
+      {{ socials('white') }}
+      <a class="botao-seta botao-seta--link" href="{{ prefix }}sobre-mim/" aria-label="{{ t.home.about_more }}">{{ icon('seta') }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="cta-titulo">
+  <div class="cta__text" data-reveal>
+    <h2 id="cta-titulo" class="cta__title">{{ t.home.cta_title }}</h2>
+    <p>{{ t.home.cta_text }}</p>
+    {{ socials('white') }}
+  </div>
+  <div class="cta__form" data-reveal>{{ contact_form(t, 'home') }}</div>
+</section>
+{% endblock %}

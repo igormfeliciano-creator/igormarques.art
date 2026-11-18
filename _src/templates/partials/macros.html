@@ -1,0 +1,52 @@
+{#- Componentes reutilizáveis (espelham os componentes do Figma) -#}
+
+{% macro socials(style='white', cls='') -%}
+<ul class="socials socials--{{ style }} {{ cls }}">
+  {%- for s in site.social %}
+  <li><a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.name }}">{{ icon(s.icon) }}</a></li>
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{% macro tag(label, style='white', el='span') -%}
+<{{ el }} class="tag tag--{{ style }}">{{ label }}</{{ el }}>
+{%- endmacro %}
+
+{% macro menu(t, style='black', id='menu', links=False, prefix='/') -%}
+<div class="menu menu--{{ style }}" data-menu>
+  <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="{{ id }}-panel"
+          aria-label="{{ t.nav.menu_open }}" data-label-open="{{ t.nav.menu_open }}" data-label-close="{{ t.nav.menu_close }}">
+    <span class="menu__bars" aria-hidden="true"><i></i><i></i></span>
+  </button>
+  <div class="menu__panel" id="{{ id }}-panel">
+    {% if links %}
+    <nav class="menu__links" aria-label="{{ t.nav.projects }}">
+      <a href="{{ prefix }}projetos/">{{ t.nav.projects }}</a>
+      <a href="{{ prefix }}sobre-mim/">{{ t.nav.about }}</a>
+      <a href="{{ prefix }}contato/">{{ t.nav.contact }}</a>
+    </nav>
+    {% endif %}
+    {{ socials('black' if style == 'black' else 'white', 'menu__socials') }}
+  </div>
+</div>
+{%- endmacro %}
+
+{% macro project_card(p, lang, t, prefix) -%}
+<a class="project-card" href="{{ prefix }}projetos/{{ p.slug }}/" data-reveal>
+  <span class="project-card__media">{{ picture(p.image, '', '(max-width: 768px) 100vw, 50vw') }}</span>
+  <span class="project-card__overlay" aria-hidden="true"></span>
+  <span class="project-card__top">
+    <span class="botao-seta" aria-hidden="true">{{ icon('seta') }}</span>
+  </span>
+  <span class="project-card__info">
+    <span class="project-card__tags">
+      {%- for tg in p.tags[lang] %}{{ tag(tg, 'glass') }}{% endfor -%}
+    </span>
+    <span class="project-card__title">{{ p.title }}</span>
+    <span class="project-card__thumbs" aria-hidden="true">
+      {%- for th in p.thumbs %}<span class="project-card__thumb">{{ picture(th, '', '120px') }}</span>{% endfor -%}
+    </span>
+  </span>
+  <span class="visually-hidden">{{ t.card.open }}</span>
+</a>
+{%- endmacro %}
