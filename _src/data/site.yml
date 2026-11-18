@@ -3,8 +3,9 @@ url: https://igormarques.art
 # Endereço do Google Apps Script que recebe o formulário (preencher depois de implantar)
 form_endpoint: ""
 social:
-  - { name: Instagram, icon: instagram, url: "#" }
-  - { name: YouTube, icon: youtube, url: "#" }
-  - { name: LinkedIn, icon: linkedin, url: "#" }
-  - { name: Behance, icon: behance, url: "#" }
-  - { name: TikTok, icon: tiktok, url: "#" }
+  - { name: Instagram, icon: instagram, url: "https://www.instagram.com/igormarques.art/" }
+  - { name: YouTube, icon: youtube, url: "https://www.youtube.com/channel/UCK0DU-8l--nYUBPN0Cq0PiA" }
+  - { name: LinkedIn, icon: linkedin, url: "https://www.linkedin.com/in/igor-marques-a46768268/" }
+  - { name: Behance, icon: behance, url: "https://www.behance.net/igormarquesfeliciano" }
+  # TikTok entra aqui quando o perfil existir:
+  # - { name: TikTok, icon: tiktok, url: "https://www.tiktok.com/@..." }
