@@ -2,9 +2,15 @@
 {% from 'partials/macros.html' import project_card, socials, tag, cta_form %}
 
 {% block content %}
-<section class="hero" aria-label="{{ t.home.hero_alt }}">
-  {{ picture('home-hero', t.home.hero_alt, '(max-width: 1440px) 100vw, 1416px', 'hero__img', eager=True) }}
+{% if site.showreel %}
+<section class="hero" aria-label="Showreel">
+  <video class="hero__video" src="{{ site.showreel }}" autoplay muted loop playsinline data-autoplay></video>
 </section>
+{% else %}
+<section class="hero hero--reel" aria-label="Igor Marques Art">
+  <div class="hero__logo" data-logo-loop aria-hidden="true"></div>
+</section>
+{% endif %}
 
 <section class="projects" aria-labelledby="projetos-titulo">
   <h2 id="projetos-titulo" class="visually-hidden">{{ t.home.projects_title }}</h2>

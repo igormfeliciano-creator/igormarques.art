@@ -22,6 +22,42 @@
     vids.forEach(function (v) { vio.observe(v); });
   }
 
+  /* ---------- primeiro painel: animação da logo em loop (até o showreel ficar pronto) ---------- */
+  var loopBox = document.querySelector('[data-logo-loop]');
+  if (loopBox && window.IMALogo) {
+    var loopAnim = window.IMALogo(loopBox, { onExit: function (ex) { loopBox.style.opacity = 1 - ex; } });
+    if (reduce) { loopAnim.render(3.3); }
+    else {
+      // forma a logo (0–3,3 s), segura pronta, sai com o fade (3,5–3,98 s) e recomeça
+      var HOLD = 2.2, PLAY = 3.3, EXIT0 = 3.5, EXIT = 0.48, GAP = 0.5;
+      var CYCLE = PLAY + HOLD + EXIT + GAP;
+      var visible = true, started = false, base = null, rafL;
+      var loopFrame = function (now) {
+        if (base === null) base = now;
+        var c = ((now - base) / 1000) % CYCLE, t;
+        if (c < PLAY) t = c;
+        else if (c < PLAY + HOLD) t = PLAY;
+        else if (c < PLAY + HOLD + EXIT) t = EXIT0 + (c - PLAY - HOLD);
+        else t = 3.98;
+        loopAnim.render(t);
+        if (c >= PLAY + HOLD + EXIT) loopBox.style.opacity = 0;
+        if (visible) rafL = requestAnimationFrame(loopFrame);
+      };
+      var startLoop = function () { if (started) return; started = true; rafL = requestAnimationFrame(loopFrame); };
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            visible = e.isIntersecting;
+            if (!started) return;
+            if (visible) { base = null; cancelAnimationFrame(rafL); rafL = requestAnimationFrame(loopFrame); }
+          });
+        }).observe(loopBox);
+      }
+      if (document.documentElement.classList.contains('is-loading')) document.addEventListener('loader:done', startLoop, { once: true });
+      else startLoop();
+    }
+  }
+
   /* ---------- seções aparecem uma vez ao entrar na tela ---------- */
   function startReveal() {
     var items = document.querySelectorAll('[data-reveal]');
