@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}{{ t.meta.title }}{% endblock %}</title>
-  <meta name="description" content="{% block description %}{{ t.meta.description }}{% endblock %}">
+  <title>{% block title %}{{ (page_title ~ " — Igor Marques Art") if page_title else t.meta.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ page_description or t.meta.description }}{% endblock %}">
   <link rel="canonical" href="{{ site.url }}{{ alt_pt if lang == 'pt' else alt_en }}">
   <link rel="alternate" hreflang="pt-BR" href="{{ site.url }}{{ alt_pt }}">
   <link rel="alternate" hreflang="en" href="{{ site.url }}{{ alt_en }}">
@@ -36,7 +36,7 @@
     </main>
     {% include 'partials/footer.html' %}
   </div>
-  {% block after %}{% endblock %}
+  {% if popup %}{% include 'partials/popup.html' %}{% endif %}
   <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

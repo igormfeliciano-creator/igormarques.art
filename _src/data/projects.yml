@@ -1,21 +1,32 @@
-# Projetos na ordem em que aparecem na home
+# Projetos na ordem em que aparecem no site.
+# Projetos com "case" ganham página própria em /projetos/<slug>/ (conteúdo em data/cases/<slug>.yml).
+# Os demais levam para o case publicado fora do site (campo "url").
+# "filters" alimenta os filtros da página Projetos; "tags" são as etiquetas exibidas no card.
 - slug: zoppy
   title: Zoppy
+  case: true
   image: card-zoppy
   thumbs: [card-zoppy-thumb-1, card-zoppy-thumb-2, card-zoppy-thumb-3, home-hero, card-zoppy-thumb-5]
+  filters: [rebranding, identidade]
   tags: { pt: [Rebranding, Identidade Visual], en: [Rebranding, Visual Identity] }
 - slug: plano-perfeito-black-friday
   title: Plano Perfeito Black Friday
+  url: https://www.behance.net/igormarquesfeliciano
   image: card-plano-perfeito-black-friday
   thumbs: [card-plano-perfeito-black-friday-thumb-1, card-plano-perfeito-black-friday-thumb-2, card-plano-perfeito-black-friday-thumb-3, card-plano-perfeito-black-friday-thumb-4, card-plano-perfeito-black-friday-thumb-5]
+  filters: [identidade]
   tags: { pt: [Identidade Visual, Evento], en: [Visual Identity, Event] }
 - slug: libcode
   title: LibCode
+  url: https://www.behance.net/igormarquesfeliciano
   image: card-libcode
   thumbs: [card-libcode-thumb-1, card-libcode-thumb-2, card-libcode-thumb-3, card-libcode-thumb-4, card-libcode-thumb-5]
-  tags: { pt: [Identidade Visual, Branding], en: [Visual Identity, Branding] }
+  filters: [do-zero, identidade]
+  tags: { pt: [Marca do Zero, Identidade Visual], en: [Brand from Scratch, Visual Identity] }
 - slug: alem-da-marca
   title: Além da Marca
+  url: https://www.behance.net/gallery/258055961/Alm-da-Marca
   image: card-alem-da-marca
   thumbs: [card-alem-da-marca-thumb-1, card-alem-da-marca-thumb-2, card-alem-da-marca-thumb-3, card-alem-da-marca-thumb-4, card-alem-da-marca-thumb-5]
-  tags: { pt: [Identidade Visual, Branding], en: [Visual Identity, Branding] }
+  filters: [do-zero, identidade]
+  tags: { pt: [Submarca, Identidade Visual], en: [Sub-brand, Visual Identity] }

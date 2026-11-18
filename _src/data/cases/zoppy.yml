@@ -1,0 +1,42 @@
+# Case da Zoppy. Imagens: _src/img-src/zoppy-NN.* (ordem abaixo).
+# O texto "after" aparece depois da imagem indicada em "after_image".
+year: "2025–2026"
+images: [zoppy-01, zoppy-02, zoppy-03, zoppy-04, zoppy-05, zoppy-06, zoppy-07, zoppy-08, zoppy-09, zoppy-10, zoppy-11, zoppy-12, zoppy-13, zoppy-14, zoppy-15, zoppy-16]
+after_image: 3
+others: [plano-perfeito-black-friday, libcode]
+pt:
+  tags: [Rebranding, Identidade Visual, Brand Design]
+  subtitle: Uma marca à altura do produto.
+  intro: >-
+    A Zoppy é uma plataforma brasileira de CRM e fidelização que ajuda lojas virtuais a trazer de volta quem já comprou,
+    com pós-venda automatizado, campanhas por WhatsApp e giftback. A empresa cresceu, e a marca precisava acompanhar esse
+    momento. Conduzi o rebranding de ponta a ponta, de abril de 2025 a setembro de 2026: símbolo, tipografia, cores,
+    linguagem de imagem e um manual de marca vivo, com uma versão pronta para leitura por ferramentas de IA.
+  facts:
+    - { label: Local, values: [Belo Horizonte, MG] }
+    - { label: Ano, values: ["2025–2026"] }
+    - { label: Projeto, values: [Rebranding, Identidade visual, Manual de marca] }
+    - { label: Equipe, values: [Igor Marques] }
+  after_title: Aplicações
+  after_text: >-
+    A nova identidade foi pensada para o dia a dia da empresa, do anúncio à landing page, do crachá ao material de evento.
+    O azul vibrante virou assinatura, e o manual organiza tudo o que o time precisa para seguir criando. Hoje a Zoppy
+    produz landing pages, anúncios e conteúdo orgânico a partir dele, sem perder consistência.
+en:
+  tags: [Rebranding, Visual Identity, Brand Design]
+  subtitle: A brand that lives up to the product.
+  intro: >-
+    Zoppy is a Brazilian CRM and loyalty platform that helps online stores bring back customers who have already bought,
+    with automated post-sale flows, WhatsApp campaigns and giftback. The company grew, and the brand needed to keep up.
+    I led the rebranding end to end, from April 2025 to September 2026: symbol, typography, colors, image language and a
+    living brand guide, including a version ready to be read by AI tools.
+  facts:
+    - { label: Location, values: [Belo Horizonte, Brazil] }
+    - { label: Year, values: ["2025–2026"] }
+    - { label: Project, values: [Rebranding, Visual identity, Brand guidelines] }
+    - { label: Team, values: [Igor Marques] }
+  after_title: Applications
+  after_text: >-
+    The new identity was built for the company's day to day, from ads to landing pages, from badges to event materials.
+    The vibrant blue became a signature, and the guide holds everything the team needs to keep creating. Today Zoppy
+    produces landing pages, ads and organic content from it without losing consistency.

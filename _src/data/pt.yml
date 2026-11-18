@@ -77,3 +77,40 @@ form:
     title: Suas respostas foram enviadas!
     text: Entrarei em contato assim que puder. Até breve!
     again: Preencher novamente
+
+projects_page:
+  title: Projetos
+  description: Projetos de identidade visual, rebranding e branding de Igor Marques.
+  filters_label: Filtrar projetos
+  filters: { all: Todos, do-zero: Marcas do zero, rebranding: Rebranding, identidade: Identidade visual }
+about_page:
+  title: Sobre mim
+  description: Igor Marques, designer de marcas e ilustrador em Belo Horizonte.
+  tags: [Brand design, Identidade visual, Ilustração]
+  wordmark_alt: igor marques art.
+  headline: Marcas com estratégia e traço próprio.
+  intro: Sou o Igor, designer de marcas e ilustrador em Belo Horizonte. Crio identidades visuais para negócios que querem ser lembrados, seja uma ideia saindo do papel, seja uma empresa pronta para o próximo passo. No meu trabalho, estratégia, sensibilidade e rigor técnico andam juntos. Cada decisão visual tem um porquê, e cada marca nasce para funcionar no dia a dia, do post à fachada.
+  photo1_alt: Igor Marques
+  photo2_alt: Igor Marques desenhando
+  what_title: O que eu faço
+  what_subtitle: Marcas completas, prontas para usar.
+  what_tags: [Marcas do zero, Rebranding, Identidade visual]
+  what_text: Desenvolvo a marca por completo, com símbolo, tipografia, cores, grid, linguagem de imagem e as aplicações que o negócio vai usar de verdade. Tudo fica documentado num manual de marca vivo, para que qualquer pessoa do time (ou outro designer) continue o trabalho sem perder consistência. Quando o projeto pede, o manual ganha também uma versão pronta para ferramentas de IA, e a marca segue consistente até no conteúdo gerado por máquina.
+  story_title: Do papel à marca
+  story_text: Nasci em Governador Valadares e vim para Belo Horizonte aos 13 anos. Foi aqui que me conectei com a arte. Fiz o técnico em Artes Visuais antes mesmo de conhecer o design, e até hoje o papel é meu lugar favorito para pensar, entre esboços, rascunhos e pinturas. Do desenho fui para o design de produto e depois para o branding. Já conduzi sozinho o rebranding de uma empresa de tecnologia em crescimento, além de submarcas e identidades de eventos. Fiz especialização em Branding com Marcelo Kimura e levo uma pergunta para todo projeto, essa marca funciona na vida real?
+contact_page:
+  title: Contato
+  description: Me conte sobre você e o seu projeto. Eu retorno e marcamos uma conversa.
+case:
+  tags_label: Categorias
+  others: Outros projetos
+cta2:
+  title: Vamos construir algo juntos?
+  button: Agendar uma conversa
+popup:
+  label: Formulário de contato
+  close: Fechar
+  title_project: Gostou do projeto?
+  title_default: Vamos criar algo juntos?
+  text: Desde 2020, atuo com design e comunicação visual, desenvolvendo soluções que unem criatividade, branding e resultados. Minha experiência envolve identidade visual, desenvolvimento de marcas, motion design, produção audiovisual, apresentações, campanhas de marketing e criação de materiais para ambientes digitais e impressos.
+  rights: Todos os direitos reservados®

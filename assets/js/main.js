@@ -62,6 +62,26 @@
     dialog.addEventListener('close', function () { document.documentElement.classList.remove('has-dialog'); });
   }
 
+  /* ---------- filtros da página Projetos ---------- */
+  var filterBar = document.querySelector('[data-filters]');
+  if (filterBar) {
+    var cards = document.querySelectorAll('.project-card[data-filters]');
+    filterBar.addEventListener('click', function (ev) {
+      var b = ev.target.closest('[data-filter]'); if (!b) return;
+      var key = b.dataset.filter;
+      filterBar.querySelectorAll('[data-filter]').forEach(function (o) {
+        var on = o === b;
+        o.setAttribute('aria-pressed', on ? 'true' : 'false');
+        o.classList.toggle('tag--white', on); o.classList.toggle('tag--black', !on);
+      });
+      cards.forEach(function (c) {
+        var show = key === 'all' || c.dataset.filters.split(' ').indexOf(key) > -1;
+        c.classList.toggle('is-hidden', !show);
+        if (show) c.classList.add('is-visible');
+      });
+    });
+  }
+
   /* ---------- formulário em etapas ---------- */
   document.querySelectorAll('[data-form]').forEach(initForm);
 

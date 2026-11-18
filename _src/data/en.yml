@@ -77,3 +77,40 @@ form:
     title: Your answers have been sent!
     text: I'll get back to you as soon as I can. Talk soon!
     again: Fill in again
+
+projects_page:
+  title: Projects
+  description: Visual identity, rebranding and branding projects by Igor Marques.
+  filters_label: Filter projects
+  filters: { all: All, do-zero: Brands from scratch, rebranding: Rebranding, identidade: Visual identity }
+about_page:
+  title: About me
+  description: Igor Marques, brand designer and illustrator based in Belo Horizonte, Brazil.
+  tags: [Brand design, Visual identity, Illustration]
+  wordmark_alt: igor marques art.
+  headline: Brands with strategy and a hand of their own.
+  intro: I'm Igor, a brand designer and illustrator based in Belo Horizonte, Brazil. I create visual identities for businesses that want to be remembered, whether it's an idea leaving the page or a company ready for its next step. In my work, strategy, sensitivity and technical rigor go hand in hand. Every visual decision has a reason, and every brand is built to work day to day, from a social post to a storefront.
+  photo1_alt: Igor Marques
+  photo2_alt: Igor Marques drawing
+  what_title: What I do
+  what_subtitle: Complete brands, ready to use.
+  what_tags: [Brands from scratch, Rebranding, Visual identity]
+  what_text: I develop the brand end to end, with symbol, typography, colors, grid, image language and the applications the business will actually use. Everything is documented in a living brand guide, so anyone on the team (or another designer) can carry the work forward without losing consistency. When the project calls for it, the guide also gets a version ready for AI tools, so the brand stays consistent even in machine-generated content.
+  story_title: From paper to brand
+  story_text: I was born in Governador Valadares and moved to Belo Horizonte at 13. That's where I connected with art. I trained as a visual arts technician before I even knew about design, and paper is still my favorite place to think, among sketches, drafts and paintings. From drawing I moved to product design and then to branding. I've single-handedly led the rebranding of a fast-growing tech company, along with sub-brands and event identities. I specialized in Branding with Marcelo Kimura, and I bring one question to every project. Does this brand work in real life?
+contact_page:
+  title: Contact
+  description: Tell me about you and your project. I'll get back to you and we'll set up a call.
+case:
+  tags_label: Categories
+  others: Other projects
+cta2:
+  title: Shall we build something together?
+  button: Book a call
+popup:
+  label: Contact form
+  close: Close
+  title_project: Did you like this project?
+  title_default: Shall we create something together?
+  text: Since 2020, I've worked in design and visual communication, building solutions that bring together creativity, branding and results. My experience covers visual identity, brand development, motion design, video production, presentations, marketing campaigns and materials for digital and print.
+  rights: All rights reserved®

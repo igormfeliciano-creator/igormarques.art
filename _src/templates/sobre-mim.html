@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import socials, tag, cta_popup %}
+{% set a = t.about_page %}
+{% block content %}
+<section class="split">
+  <div class="split__info" data-reveal>
+    <div class="tags">{% for tg in a.tags %}{{ tag(tg, 'black') }}{% endfor %}</div>
+    <span class="split__wordmark">{{ picture('logo-tipografia-b', a.wordmark_alt, '380px') }}</span>
+    <h1 class="subtitle">{{ a.headline }}</h1>
+    <p class="lead">{{ a.intro }}</p>
+  </div>
+  <div class="photo-card" data-reveal>
+    {{ picture('sobre-foto-1', a.photo1_alt, '(max-width: 768px) 100vw, 50vw') }}
+    <div class="photo-card__bar">
+      {{ socials('white') }}
+      <button class="botao-seta botao-seta--link botao-seta--sm" type="button" data-open-form aria-haspopup="dialog" aria-label="{{ t.cta2.button }}">{{ icon('seta') }}</button>
+    </div>
+  </div>
+</section>
+<hr class="divisor divisor--page">
+<section class="split split--center">
+  <div class="split__info" data-reveal>
+    <h2 class="display">{{ a.what_title }}</h2>
+    <p class="subtitle">{{ a.what_subtitle }}</p>
+    <div class="tags">{% for tg in a.what_tags %}{{ tag(tg, 'black') }}{% endfor %}</div>
+  </div>
+  <div class="split__text" data-reveal><p class="lead">{{ a.what_text }}</p></div>
+</section>
+<hr class="divisor divisor--page">
+<section class="split split--reverse-mobile">
+  <div class="photo-card photo-card--short" data-reveal>
+    {{ picture('sobre-foto-2', a.photo2_alt, '(max-width: 768px) 100vw, 50vw') }}
+    <div class="photo-card__bar">
+      {{ socials('white') }}
+      <button class="botao-seta botao-seta--link botao-seta--sm" type="button" data-open-form aria-haspopup="dialog" aria-label="{{ t.cta2.button }}">{{ icon('seta') }}</button>
+    </div>
+  </div>
+  <div class="split__info" data-reveal>
+    <h2 class="subtitle">{{ a.story_title }}</h2>
+    <p class="lead">{{ a.story_text }}</p>
+  </div>
+</section>
+{{ cta_popup(t, lang, prefix, ['zoppy', 'plano-perfeito-black-friday']) }}
+{% endblock %}

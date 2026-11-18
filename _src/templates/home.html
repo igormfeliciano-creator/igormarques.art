@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-{% from 'partials/macros.html' import project_card, socials, tag %}
-{% from 'partials/form.html' import contact_form %}
+{% from 'partials/macros.html' import project_card, socials, tag, cta_form %}
 
 {% block content %}
 <section class="hero" aria-label="{{ t.home.hero_alt }}">
@@ -30,12 +29,5 @@
   </div>
 </section>
 
-<section class="cta" aria-labelledby="cta-titulo">
-  <div class="cta__text" data-reveal>
-    <h2 id="cta-titulo" class="cta__title">{{ t.home.cta_title }}</h2>
-    <p>{{ t.home.cta_text }}</p>
-    {{ socials('white') }}
-  </div>
-  <div class="cta__form" data-reveal>{{ contact_form(t, 'home') }}</div>
-</section>
+{{ cta_form(t, 'home') }}
 {% endblock %}

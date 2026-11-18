@@ -1,6 +1,5 @@
 {#- Formulário de contato em 3 etapas + confirmação (componente Form do Figma).
     `uid` evita ids repetidos quando o form aparece duas vezes na mesma página. -#}
-{% from 'partials/macros.html' import socials %}
 
 {% macro field(uid, name, label, ph, f, type='text', required=False, optional=False, autocomplete='', inputmode='', help='', maxlength=120) -%}
 <div class="input{{ ' input--textarea' if type == 'textarea' }}" data-field>
@@ -107,7 +106,7 @@
     <span class="form__sent-icon">{{ icon('check') }}</span>
     <p class="form__sent-title">{{ f.sent.title }}</p>
     <p class="form__sent-text">{{ f.sent.text }}</p>
-    {{ socials('black') }}
+    <ul class="socials socials--black">{% for s in site.social %}<li><a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.name }}">{{ icon(s.icon) }}</a></li>{% endfor %}</ul>
     <button class="form__again" type="button" data-again>{{ f.sent.again }}</button>
   </div>
 </form>

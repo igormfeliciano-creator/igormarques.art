@@ -110,10 +110,28 @@ def picture(name, alt='', sizes='100vw', cls='', eager=False):
     return Markup(f'<img {attrs} src="{default}" srcset="{srcset}" sizes="{sizes}" width="{meta["w"]}" height="{meta["h"]}">')
 
 # ---------- páginas ----------
-PAGES = [
-    # (template, caminho PT, caminho EN)
-    ('home.html', '', 'en/'),
-]
+def pages(projects, strings):
+    """(template, caminho PT, caminho EN, contexto extra por idioma)"""
+    out = [
+        ('home.html', '', 'en/', lambda l: dict(page='home')),
+        ('projetos.html', 'projetos/', 'en/projetos/', lambda l: dict(
+            page='projetos', page_title=strings[l]['projects_page']['title'],
+            page_description=strings[l]['projects_page']['description'])),
+        ('sobre-mim.html', 'sobre-mim/', 'en/sobre-mim/', lambda l: dict(
+            page='sobre-mim', popup='default', page_title=strings[l]['about_page']['title'],
+            page_description=strings[l]['about_page']['description'])),
+        ('contato.html', 'contato/', 'en/contato/', lambda l: dict(
+            page='contato', page_title=strings[l]['contact_page']['title'],
+            page_description=strings[l]['contact_page']['description'])),
+    ]
+    for p in projects:
+        if not p.get('case'):
+            continue
+        case = load(f"cases/{p['slug']}.yml")
+        out.append(('projeto.html', f"projetos/{p['slug']}/", f"en/projetos/{p['slug']}/",
+                    lambda l, p=p, case=case: dict(page='projetos', popup='project', project=p, case=case,
+                                                   page_title=p['title'], page_description=case[l]['subtitle'])))
+    return out
 
 def main():
     if '--images' in sys.argv:
@@ -124,12 +142,12 @@ def main():
     env = Environment(loader=FileSystemLoader(SRC / 'templates'), autoescape=select_autoescape(['html']),
                       trim_blocks=True, lstrip_blocks=True)
     env.globals.update(icon=icon, logo_svg=logo_svg, picture=picture, site=site, projects=projects)
-    for tpl, pt_path, en_path in PAGES:
+    for tpl, pt_path, en_path, extra in pages(projects, strings):
         for lang, path in (('pt', pt_path), ('en', en_path)):
-            t = strings[lang]
             prefix = '/' if lang == 'pt' else '/en/'
-            ctx = dict(lang=lang, t=t, prefix=prefix, path=path,
-                       alt_pt='/' + pt_path, alt_en='/' + en_path, page=tpl.replace('.html', ''))
+            ctx = dict(lang=lang, t=strings[lang], prefix=prefix, path=path,
+                       alt_pt='/' + pt_path, alt_en='/' + en_path, popup=None, page_title=None, page_description=None)
+            ctx.update(extra(lang))
             html = env.get_template(tpl).render(**ctx)
             out = ROOT / path / 'index.html'
             out.parent.mkdir(parents=True, exist_ok=True)

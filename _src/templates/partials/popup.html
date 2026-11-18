@@ -1,0 +1,20 @@
+{% from 'partials/macros.html' import socials %}
+{% from 'partials/form.html' import contact_form %}
+<dialog class="dialog" data-form-dialog aria-labelledby="popup-titulo">
+  <div class="dialog__inner">
+    <div class="dialog__top">
+      <span class="dialog__logo">{{ logo_svg('logo', 'Igor Marques Art') }}</span>
+      <button class="dialog__close" type="button" data-close-form aria-label="{{ t.popup.close }}"><span aria-hidden="true"><i></i><i></i></span></button>
+    </div>
+    <div class="dialog__body">
+      <div class="dialog__intro">
+        <span class="dialog__wordmark">{{ picture('logo-tipografia-a', 'igor marques art.', '420px') }}</span>
+        <h2 id="popup-titulo" class="dialog__title">{{ t.popup.title_project if popup == 'project' else t.popup.title_default }}</h2>
+        <p>{{ t.popup.text }}</p>
+        {{ socials('black') }}
+      </div>
+      <div class="dialog__form">{{ contact_form(t, 'popup') }}</div>
+    </div>
+    <p class="dialog__rights">{{ t.popup.rights }}</p>
+  </div>
+</dialog>

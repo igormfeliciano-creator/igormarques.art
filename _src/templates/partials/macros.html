@@ -1,3 +1,4 @@
+{% from 'partials/form.html' import contact_form %}
 {#- Componentes reutilizáveis (espelham os componentes do Figma) -#}
 
 {% macro socials(style='white', cls='') -%}
@@ -32,7 +33,9 @@
 {%- endmacro %}
 
 {% macro project_card(p, lang, t, prefix) -%}
-<a class="project-card" href="{{ prefix }}projetos/{{ p.slug }}/" data-reveal>
+{% set external = not p.case %}
+<a class="project-card" href="{{ p.url if external else prefix ~ 'projetos/' ~ p.slug ~ '/' }}"{% if external %} target="_blank" rel="noopener"{% endif %}
+   data-reveal data-filters="{{ p.filters | join(' ') }}">
   <span class="project-card__media">{{ picture(p.image, '', '(max-width: 768px) 100vw, 50vw') }}</span>
   <span class="project-card__overlay" aria-hidden="true"></span>
   <span class="project-card__top">
@@ -49,4 +52,31 @@
   </span>
   <span class="visually-hidden">{{ t.card.open }}</span>
 </a>
+{%- endmacro %}
+
+{# bloco preto "Vamos criar algo juntos?" + formulário (home e contato) #}
+{% macro cta_form(t, uid, small=False) -%}
+<section class="cta{{ ' cta--small' if small }}" aria-labelledby="{{ uid }}-cta-titulo">
+  <div class="cta__text" data-reveal>
+    <h2 id="{{ uid }}-cta-titulo" class="cta__title">{{ t.home.cta_title }}</h2>
+    <p>{{ t.home.cta_text }}</p>
+    {{ socials('white') }}
+  </div>
+  <div class="cta__form" data-reveal>{{ contact_form(t, uid) }}</div>
+</section>
+{%- endmacro %}
+
+{# seção "Vamos construir algo juntos?" com botão que abre o popup + dois projetos #}
+{% macro cta_popup(t, lang, prefix, slugs) -%}
+<section class="build" aria-labelledby="build-titulo">
+  <div class="build__info" data-reveal>
+    <h2 id="build-titulo" class="build__title">{{ t.cta2.title }}</h2>
+    <button class="botao-primario botao-primario--auto" type="button" data-open-form aria-haspopup="dialog">
+      <span>{{ t.cta2.button }}</span>{{ icon('seta-direita') }}
+    </button>
+  </div>
+  <div class="projects__grid">
+    {% for p in projects if p.slug in slugs %}{{ project_card(p, lang, t, prefix) }}{% endfor %}
+  </div>
+</section>
 {%- endmacro %}
