@@ -34,6 +34,7 @@ form:
   choice_error: Choose an option.
   select_placeholder: Select an option
   privacy: Your details are only used to reply to you.
+  sending: Sending…
   send_error: Couldn't send right now. Try again in a moment or reach me on social media.
   step1:
     title: Tell me a bit about yourself.

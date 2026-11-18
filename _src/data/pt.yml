@@ -34,6 +34,7 @@ form:
   choice_error: Escolha uma opção.
   select_placeholder: Selecione uma opção
   privacy: Seus dados servem só para eu responder o seu contato.
+  sending: Enviando…
   send_error: Não foi possível enviar agora. Tente de novo em instantes ou me chame pelas redes.
   step1:
     title: Me conte um pouco sobre você.

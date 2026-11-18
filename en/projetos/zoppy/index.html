@@ -27,12 +27,8 @@
   </script>
 </head>
 <body class="page-projetos">
-<div class="loader" id="loader" aria-hidden="true"><div class="loader__panel">
-  <svg viewBox="0 0 2250 2250" xmlns="http://www.w3.org/2000/svg">
-    <g id="logo"><g id="construct"><path id="shape" fill-rule="evenodd" fill="#fff"/><path id="outline" fill="none" stroke="#fff" stroke-width="3" vector-effect="non-scaling-stroke" opacity="0"/><g id="handles"></g></g>
-    <rect id="dot" x="594" y="867" width="141" height="141" rx="22" fill="#fff" transform="scale(0)"/></g>
-  </svg>
-</div></div>
+<div class="loader" id="loader" aria-hidden="true"><div class="loader__panel" id="loader-panel"></div></div>
+<script src="/assets/js/logo-anim.js"></script>
 <script>
 (function () {
   var root = document.documentElement, el = document.getElementById('loader');
@@ -40,169 +36,11 @@
   try { sessionStorage.setItem('ima-loader', '1'); } catch (e) {}
   root.classList.add('is-loading');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const E = {
-    linear: t => t,
-    inCubic: t => t * t * t,
-    outCubic: t => 1 - Math.pow(1 - t, 3),
-    inOutCubic: t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
-    outQuart: t => 1 - Math.pow(1 - t, 4),
-    outExpo: t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
-    inOutExpo: t => t === 0 ? 0 : t === 1 ? 1 : t < .5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2,
-    outBack: t => { const c1 = 1.4, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); },
-  };
-  
-  /* Geometria final (medida no quadro 06) */
-  const G = {
-    footW: 104,
-    body: { x: 801, y: 867, w: 693, h: 328, r: 18 },
-    holes: [ { dx: 141, w: 141 }, { dx: 423, w: 132 } ], holeDy: 95, holeH: 140, holeR: 10,
-    stemL: 282, stemR: 423, footL: 178, footH: 94, descH: 188, descR: 40, footR: 8,
-    armW: 162, armH: 95, armR: 10,
-    handle: 30,
-  };
-  
-  /* Timeline: valor inicial + segmentos [início, fim, valor final, easing] */
-  const DURATION = 3.98;
-  const T = {
-    intro:   [0,    [0.20, 0.50, 1, 'outBack']],
-    bx:      [1110, [0.55, 1.00, 1052, 'inOutCubic'], [1.05, 1.65, 778.5, 'inOutExpo'], [1.72, 2.02, 801, 'inOutCubic']],
-    by:      [1110, [0.55, 1.00, 1052, 'inOutCubic'], [1.05, 1.65, 961,   'inOutExpo'], [1.72, 2.02, 867, 'inOutCubic']],
-    bw:      [30,   [0.55, 1.00, 146,  'inOutCubic'], [1.05, 1.65, 693, 'inOutExpo']],
-    bh:      [30,   [0.55, 1.00, 146,  'inOutCubic'], [1.05, 1.65, 328, 'inOutExpo']],
-    r:       [3,    [0.55, 1.00, 8,    'inOutCubic'], [1.05, 1.65, 18,  'inOutExpo']],
-    rTR:     [3,    [0.55, 1.00, 8,    'inOutCubic'], [1.05, 1.65, 18,  'inOutExpo'], [2.48, 2.58, 0, 'inCubic']],
-    gray:    [255,  [0.55, 0.95, 102,  'inOutCubic'], [1.05, 1.65, 77,  'inOutCubic'], [1.72, 2.02, 102, 'inOutCubic'], [2.38, 2.75, 255, 'outCubic']],
-    outline: [0,    [0.70, 0.90, 1, 'outCubic'], [2.32, 2.52, 0, 'inCubic']],
-    handles: [0,    [0.72, 0.95, 1, 'outBack'],  [2.32, 2.50, 0, 'inCubic']],
-    split:   [0,    [1.05, 1.50, 1, 'inOutCubic']],
-    holes:   [0,    [1.36, 1.74, 1, 'outQuart']],
-    stem:    [0,    [1.78, 2.20, 188, 'inOutCubic']],                                  // haste desce num movimento só (passa pelo quadro 4.5)
-    foot:    [0,    [2.04, 2.28, 104, 'outCubic']],                                   // pé cresce para a esquerda
-    descR:   [0,    [2.06, 2.28, 40, 'outCubic']],
-    arm:     [0,    [2.58, 2.94, 1, 'outExpo']],
-    dot:     [0,    [2.64, 2.98, 1, 'outBack']],
-    exit:    [0,    [3.50, 3.98, 1, 'inOutCubic']],
-  };
-  
-  function val(track, t) {
-    let v = track[0];
-    for (let i = 1; i < track.length; i++) {
-      const [t0, t1, to, ease] = track[i];
-      if (t >= t1) { v = to; continue; }
-      if (t > t0) v = v + (to - v) * E[ease]((t - t0) / (t1 - t0));
-      break;
-    }
-    return v;
-  }
-  function stateAt(t) { const s = {}; for (const k in T) s[k] = val(T[k], t); return s; }
-  
-  /* ---------- desenho ---------- */
-  const $ = id => document.getElementById(id);
-  const shape = $('shape'), outline = $('outline'), handlesG = $('handles'), dot = $('dot'),
-        construct = $('construct'), logo = $('logo'), loader = $('loader');
-  const f = n => Math.round(n * 100) / 100;
-  
-  function roundRect(x, y, w, h, r) {
-    r = Math.max(0, Math.min(r, w / 2, h / 2));
-    return `M${f(x + r)},${f(y)}H${f(x + w - r)}A${f(r)},${f(r)} 0 0 1 ${f(x + w)},${f(y + r)}V${f(y + h - r)}` +
-           `A${f(r)},${f(r)} 0 0 1 ${f(x + w - r)},${f(y + h)}H${f(x + r)}A${f(r)},${f(r)} 0 0 1 ${f(x)},${f(y + h - r)}` +
-           `V${f(y + r)}A${f(r)},${f(r)} 0 0 1 ${f(x + r)},${f(y)}Z`;
-  }
-  
-  function holeRects(s) {
-    if (s.holes <= 0.001) return [];
-    return G.holes.map(h => {
-      const sx = s.bw / G.body.w, sy = s.bh / G.body.h;   // acompanha a largura do corpo enquanto ele cresce
-      const w = h.w * sx * s.holes, hh = G.holeH * sy * s.holes;
-      const cx = s.bx + (h.dx + h.w / 2) * sx, cy = s.by + (G.holeDy + G.holeH / 2) * sy;
-      return { x: cx - w / 2, y: cy - hh / 2, w, h: hh, r: G.holeR * s.holes };
-    });
-  }
-  
-  function pathFor(s) {
-    const { bx, by, bw, bh } = s;
-    const r = Math.min(s.r, bw / 2, bh / 2);
-    const A = (rad, x, y) => `A${f(rad)},${f(rad)} 0 0 1 ${f(x)},${f(y)}`;
-    let p = `M${f(bx + r)},${f(by)}`;
-    if (s.arm > 0.0005) {                                  // braço superior direito
-      const aw = G.armW * s.arm, xr = bx + bw + aw, ra = Math.min(G.armR, aw / 2);
-      p += `H${f(xr - ra)}${A(ra, xr, by + ra)}V${f(by + G.armH - ra)}${A(ra, xr - ra, by + G.armH)}H${f(bx + bw)}`;
-    } else {
-      const t = Math.min(s.rTR, bw / 2, bh / 2);
-      p += `H${f(bx + bw - t)}${A(t, bx + bw, by + t)}`;
-    }
-    p += `V${f(by + bh - r)}${A(r, bx + bw - r, by + bh)}`;
-    if (s.stem > 0.5) {                                    // haste e pé da descendente
-      const yb = by + bh, sL = bx + G.stemL, sR = bx + G.stemR, bot = yb + s.stem, ft = yb + G.footH;
-      const rb = Math.min(s.descR, (sR - sL) / 2, s.stem / 2);
-      const W = s.stem > G.footH + 1 ? s.foot : 0, fL = sL - W, rf = Math.min(G.footR * (W / G.footW), W / 2, (bot - ft) / 2);
-      p += `H${f(sR)}V${f(bot - rb)}${A(rb, sR - rb, bot)}`;
-      if (W > 0.5) p += `H${f(fL + rf)}${A(rf, fL, bot - rf)}V${f(ft + rf)}${A(rf, fL + rf, ft)}H${f(sL)}V${f(yb)}`;
-      else p += `H${f(sL)}V${f(yb)}`;
-    }
-    p += `H${f(bx + r)}${A(r, bx, by + bh - r)}V${f(by + r)}${A(r, bx + r, by)}Z`;
-    for (const h of holeRects(s)) p += roundRect(h.x, h.y, h.w, h.h, h.r);
-    return p;
-  }
-  
-  function anchors(s) {
-    const pts = [];
-    const { bx, by, bw, bh } = s, r = Math.min(s.r, bw / 2, bh / 2);
-    if (s.split < 0.02) {
-      pts.push([bx, by, 1], [bx + bw, by, 1], [bx + bw, by + bh, 1], [bx, by + bh, 1]);
-    } else {
-      const k = r * s.split;
-      pts.push([bx + k, by, 1], [bx, by + k, 1], [bx + bw - k, by, 1], [bx + bw, by + k, 1],
-               [bx + bw, by + bh - k, 1], [bx + bw - k, by + bh, 1], [bx + k, by + bh, 1], [bx, by + bh - k, 1]);
-    }
-    const hl = Math.min(1, s.holes * 2);
-    for (const h of holeRects(s)) pts.push([h.x, h.y, hl], [h.x + h.w, h.y, hl], [h.x + h.w, h.y + h.h, hl], [h.x, h.y + h.h, hl]);
-    if (s.stem > 0.5) {
-      const l = Math.min(1, s.stem / 30), yb = by + bh, sL = bx + G.stemL, sR = bx + G.stemR, bot = yb + s.stem, ft = yb + G.footH;
-      const rb = Math.min(s.descR, s.stem / 2), W = s.stem > G.footH + 1 ? s.foot : 0;
-      pts.push([sL, yb, l], [sR, yb, l], [sR, bot - rb, l]);
-      if (rb > 1) pts.push([sR - rb, bot, l]);
-      if (W > 0.5) { const wl = Math.min(1, W / 30); pts.push([sL - W, bot, wl], [sL - W, ft, wl], [sL, ft, wl]); }
-      else pts.push([sL, bot, l]);
-    }
-    return pts;
-  }
-  
-  const pool = [];
-  function drawHandles(s) {
-    const pts = s.handles > 0.001 ? anchors(s) : [];
-    while (pool.length < pts.length) {
-      const el = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      el.setAttribute('fill', '#fff'); handlesG.appendChild(el); pool.push(el);
-    }
-    pool.forEach((el, i) => {
-      if (i >= pts.length) { el.setAttribute('display', 'none'); return; }
-      const [x, y, l] = pts[i], size = G.handle * s.handles * l;
-      el.removeAttribute('display');
-      el.setAttribute('x', f(x - size / 2)); el.setAttribute('y', f(y - size / 2));
-      el.setAttribute('width', f(Math.max(0, size))); el.setAttribute('height', f(Math.max(0, size)));
-    });
-  }
-  
-  function render(t) {
-    const s = stateAt(t);
-    const d = pathFor(s);
-    const g = Math.round(s.gray);
-    shape.setAttribute('d', d);
-    shape.setAttribute('fill', `rgb(${g},${g},${g})`);
-    outline.setAttribute('d', d);
-    outline.setAttribute('opacity', f(s.outline));
-    drawHandles(s);
-    construct.setAttribute('transform', `translate(1125 1125) scale(${f(Math.max(0, s.intro))}) translate(-1125 -1125)`);
-    dot.setAttribute('transform', `translate(664.5 937.5) scale(${f(Math.max(0, s.dot))}) translate(-664.5 -937.5)`);
-    const ex = s.exit;
-    logo.setAttribute('transform', `translate(1125 1125) scale(${f(1 - 0.06 * ex)}) translate(-1125 -1125)`);
-    loader.style.opacity = 1 - ex;
-  }
+  var anim = window.IMALogo(document.getElementById('loader-panel'), { onExit: function (ex) { el.style.opacity = 1 - ex; } });
   function finish() { root.classList.remove('is-loading'); el.remove(); document.dispatchEvent(new Event('loader:done')); }
-  if (reduce) { render(3.3); setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = 0; setTimeout(finish, 400); }, 700); return; }
+  if (reduce) { anim.render(3.3); setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = 0; setTimeout(finish, 400); }, 700); return; }
   var start = null;
-  function tick(now) { if (start === null) start = now; var t = (now - start) / 1000; render(Math.min(t, DURATION)); if (t < DURATION) requestAnimationFrame(tick); else finish(); }
+  function tick(now) { if (start === null) start = now; var t = (now - start) / 1000; anim.render(Math.min(t, anim.duration)); if (t < anim.duration) requestAnimationFrame(tick); else finish(); }
   requestAnimationFrame(tick);
 })();
 </script>
@@ -555,9 +393,16 @@
 
   <div class="form__progress" aria-hidden="true"><i></i><i></i><i></i></div>
 
+  <div class="form__sending" data-sending hidden aria-live="polite">
+    <span class="form__sending-logo" data-sending-logo></span>
+    <span class="visually-hidden">Sending…</span>
+  </div>
+
   <div class="form__sent" data-sent hidden tabindex="-1">
-    <span class="form__sent-icon"><svg class="icon icon-check " width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 0C8.02219 0 6.08879 0.58649 4.4443 1.6853C2.79981 2.78412 1.51809 4.3459 0.761209 6.17316C0.00433284 8.00042 -0.1937 10.0111 0.192152 11.9509C0.578004 13.8907 1.53041 15.6725 2.92894 17.0711C4.32746 18.4696 6.10929 19.422 8.0491 19.8078C9.98891 20.1937 11.9996 19.9957 13.8268 19.2388C15.6541 18.4819 17.2159 17.2002 18.3147 15.5557C19.4135 13.9112 20 11.9778 20 10C19.9972 7.34869 18.9427 4.80678 17.068 2.93202C15.1932 1.05727 12.6513 0.00279983 10 0ZM14.3904 8.23654L9.00577 13.6212C8.93433 13.6927 8.84949 13.7494 8.75611 13.7881C8.66273 13.8268 8.56263 13.8468 8.46154 13.8468C8.36045 13.8468 8.26035 13.8268 8.16697 13.7881C8.07359 13.7494 7.98875 13.6927 7.91731 13.6212L5.60962 11.3135C5.46528 11.1691 5.38419 10.9734 5.38419 10.7692C5.38419 10.5651 5.46528 10.3693 5.60962 10.225C5.75396 10.0807 5.94972 9.99957 6.15385 9.99957C6.35798 9.99957 6.55374 10.0807 6.69808 10.225L8.46154 11.9894L13.3019 7.14808C13.3734 7.07661 13.4582 7.01991 13.5516 6.98123C13.645 6.94256 13.7451 6.92265 13.8462 6.92265C13.9472 6.92265 14.0473 6.94256 14.1407 6.98123C14.2341 7.01991 14.3189 7.07661 14.3904 7.14808C14.4619 7.21954 14.5185 7.30439 14.5572 7.39777C14.5959 7.49115 14.6158 7.59123 14.6158 7.69231C14.6158 7.79338 14.5959 7.89346 14.5572 7.98684C14.5185 8.08022 14.4619 8.16507 14.3904 8.23654Z" fill="currentColor"/></svg>
-</span>
+    <span class="form__sent-icon" aria-hidden="true">
+      <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="currentColor"/>
+        <polyline points="6.2,10.3 8.8,12.9 13.9,7.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg>
+    </span>
     <p class="form__sent-title">Your answers have been sent!</p>
     <p class="form__sent-text">I&#39;ll get back to you as soon as I can. Talk soon!</p>
     <ul class="socials socials--black"><li><a href="https://www.instagram.com/igormarques.art/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon icon-instagram " width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C5.829 0 5.556 0.01 4.703 0.048C3.85 0.088 3.269 0.222 2.76 0.42C2.22584 0.620326 1.74214 0.935398 1.343 1.343C0.935398 1.74214 0.620326 2.22584 0.42 2.76C0.222 3.268 0.087 3.85 0.048 4.7C0.01 5.555 0 5.827 0 8.001C0 10.173 0.01 10.445 0.048 11.298C0.088 12.15 0.222 12.731 0.42 13.24C0.625 13.766 0.898 14.212 1.343 14.657C1.787 15.102 2.233 15.376 2.759 15.58C3.269 15.778 3.849 15.913 4.701 15.952C5.555 15.99 5.827 16 8 16C10.173 16 10.444 15.99 11.298 15.952C12.149 15.912 12.732 15.778 13.241 15.58C13.7748 15.3795 14.2581 15.0645 14.657 14.657C15.102 14.212 15.375 13.766 15.58 13.24C15.777 12.731 15.912 12.15 15.952 11.298C15.99 10.445 16 10.173 16 8C16 5.827 15.99 5.555 15.952 4.701C15.912 3.85 15.777 3.268 15.58 2.76C15.3797 2.22584 15.0646 1.74214 14.657 1.343C14.2579 0.935398 13.7742 0.620326 13.24 0.42C12.73 0.222 12.148 0.087 11.297 0.048C10.443 0.01 10.172 0 7.998 0H8ZM7.283 1.442H8.001C10.137 1.442 10.39 1.449 11.233 1.488C12.013 1.523 12.437 1.654 12.719 1.763C13.092 1.908 13.359 2.082 13.639 2.362C13.919 2.642 14.092 2.908 14.237 3.282C14.347 3.563 14.477 3.987 14.512 4.767C14.551 5.61 14.559 5.863 14.559 7.998C14.559 10.133 14.551 10.387 14.512 11.23C14.477 12.01 14.346 12.433 14.237 12.715C14.1078 13.0619 13.9032 13.3758 13.638 13.634C13.358 13.914 13.092 14.087 12.718 14.232C12.438 14.342 12.014 14.472 11.233 14.508C10.39 14.546 10.137 14.555 8.001 14.555C5.865 14.555 5.611 14.546 4.768 14.508C3.988 14.472 3.565 14.342 3.283 14.232C2.93583 14.1033 2.6216 13.899 2.363 13.634C2.09727 13.3756 1.89233 13.0614 1.763 12.714C1.654 12.433 1.523 12.009 1.488 11.229C1.45 10.386 1.442 10.133 1.442 7.996C1.442 5.859 1.45 5.608 1.488 4.765C1.524 3.985 1.654 3.561 1.764 3.279C1.909 2.906 2.083 2.639 2.363 2.359C2.643 2.079 2.909 1.906 3.283 1.761C3.565 1.651 3.988 1.521 4.768 1.485C5.506 1.451 5.792 1.441 7.283 1.44V1.442ZM12.271 2.77C12.1449 2.77 12.0201 2.79483 11.9036 2.84308C11.7872 2.89132 11.6813 2.96203 11.5922 3.05118C11.503 3.14032 11.4323 3.24615 11.3841 3.36262C11.3358 3.4791 11.311 3.60393 11.311 3.73C11.311 3.85607 11.3358 3.9809 11.3841 4.09738C11.4323 4.21385 11.503 4.31968 11.5922 4.40882C11.6813 4.49797 11.7872 4.56868 11.9036 4.61692C12.0201 4.66517 12.1449 4.69 12.271 4.69C12.5256 4.69 12.7698 4.58886 12.9498 4.40882C13.1299 4.22879 13.231 3.98461 13.231 3.73C13.231 3.47539 13.1299 3.23121 12.9498 3.05118C12.7698 2.87114 12.5256 2.77 12.271 2.77ZM8.001 3.892C7.45607 3.8835 6.91489 3.98349 6.40898 4.18614C5.90306 4.3888 5.44251 4.69007 5.05415 5.07242C4.66579 5.45478 4.35736 5.91057 4.14684 6.41326C3.93632 6.91595 3.8279 7.4555 3.8279 8.0005C3.8279 8.5455 3.93632 9.08505 4.14684 9.58774C4.35736 10.0904 4.66579 10.5462 5.05415 10.9286C5.44251 11.3109 5.90306 11.6122 6.40898 11.8149C6.91489 12.0175 7.45607 12.1175 8.001 12.109C9.07954 12.0922 10.1082 11.6519 10.865 10.8833C11.6217 10.1146 12.0459 9.07917 12.0459 8.0005C12.0459 6.92183 11.6217 5.88641 10.865 5.11775C10.1082 4.34909 9.07954 3.90883 8.001 3.892ZM8.001 5.333C8.35124 5.333 8.69804 5.40198 9.02162 5.53601C9.34519 5.67004 9.6392 5.86649 9.88685 6.11415C10.1345 6.3618 10.331 6.65581 10.465 6.97938C10.599 7.30296 10.668 7.64976 10.668 8C10.668 8.35023 10.599 8.69704 10.465 9.02062C10.331 9.34419 10.1345 9.6382 9.88685 9.88585C9.6392 10.1335 9.34519 10.33 9.02162 10.464C8.69804 10.598 8.35124 10.667 8.001 10.667C7.29367 10.667 6.61531 10.386 6.11515 9.88585C5.61499 9.38569 5.334 8.70733 5.334 8C5.334 7.29267 5.61499 6.61431 6.11515 6.11415C6.61531 5.61399 7.29367 5.333 8.001 5.333Z" fill="currentColor"/></svg>

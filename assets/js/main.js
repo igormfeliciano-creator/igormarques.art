@@ -201,12 +201,47 @@
       var req = endpoint
         ? fetch(endpoint, { method: 'POST', body: body, mode: 'no-cors' })
         : new Promise(function (r) { setTimeout(r, 600); }); // sem endereço configurado: só simula
+      // animação de envio: a logo se forma enquanto o pedido é enviado
+      var sending = form.querySelector('[data-sending]');
+      var anim = null, t0 = null, done = false, failed = false, raf;
+      var reveal = function () {
+        sending.hidden = true;
+        form.classList.remove('is-sending-anim');
+        form.classList.add('is-sent');
+        sent.hidden = false;
+        if (reduce) { sent.focus(); return; }
+        form.classList.add('is-revealing');
+        void sent.offsetWidth;
+        form.classList.add('is-revealed');
+        form.classList.remove('is-revealing');
+        sent.focus({ preventScroll: true });
+      };
+      if (!reduce && window.IMALogo) {
+        steps.forEach(function (s) { s.hidden = true; });
+        form.classList.add('is-sending-anim');
+        sending.hidden = false;
+        var box = form.querySelector('[data-sending-logo]');
+        box.style.opacity = 1;
+        anim = window.IMALogo(box, { invert: true, onExit: function (ex) { box.style.opacity = 1 - ex; } });
+        var frame = function (now) {
+          if (failed) return;
+          if (t0 === null) t0 = now;
+          var t = (now - t0) / 1000;
+          // segura a logo pronta (3,3 s) enquanto o envio não termina; depois faz a saída
+          if (!done && t > 3.3) { t0 = now - 3300; t = 3.3; }
+          anim.render(Math.min(t, anim.duration));
+          if (t < anim.duration) raf = requestAnimationFrame(frame); else reveal();
+        };
+        raf = requestAnimationFrame(frame);
+      }
       req.then(function () {
         lastSend = Date.now();
-        steps.forEach(function (s) { s.hidden = true; });
-        form.classList.add('is-sent');
-        sent.hidden = false; sent.focus();
+        done = true;
+        if (!anim) { steps.forEach(function (s) { s.hidden = true; }); reveal(); }
       }).catch(function () {
+        failed = true; cancelAnimationFrame(raf);
+        sending.hidden = true; form.classList.remove('is-sending-anim');
+        show(3);
         sendError.textContent = msg.msgSend; sendError.hidden = false;
       }).then(function () { form.classList.remove('is-sending'); });
     });
@@ -214,7 +249,7 @@
     form.querySelector('[data-again]').addEventListener('click', function () {
       form.reset();
       form.querySelectorAll('[data-field]').forEach(function (f) { setState(f, 'none'); var s = f.querySelector('select'); if (s) s.classList.add('is-empty'); });
-      form.classList.remove('is-sent'); sent.hidden = true; show(1);
+      form.classList.remove('is-sent', 'is-revealed'); sent.hidden = true; show(1);
       var first = form.querySelector('input:not([type=hidden]):not([name=website])'); if (first) first.focus();
     });
   }

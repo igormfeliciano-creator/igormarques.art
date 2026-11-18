@@ -102,8 +102,16 @@
 
   <div class="form__progress" aria-hidden="true"><i></i><i></i><i></i></div>
 
+  <div class="form__sending" data-sending hidden aria-live="polite">
+    <span class="form__sending-logo" data-sending-logo></span>
+    <span class="visually-hidden">{{ f.sending }}</span>
+  </div>
+
   <div class="form__sent" data-sent hidden tabindex="-1">
-    <span class="form__sent-icon">{{ icon('check') }}</span>
+    <span class="form__sent-icon" aria-hidden="true">
+      <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="currentColor"/>
+        <polyline points="6.2,10.3 8.8,12.9 13.9,7.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg>
+    </span>
     <p class="form__sent-title">{{ f.sent.title }}</p>
     <p class="form__sent-text">{{ f.sent.text }}</p>
     <ul class="socials socials--black">{% for s in site.social %}<li><a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.name }}">{{ icon(s.icon) }}</a></li>{% endfor %}</ul>

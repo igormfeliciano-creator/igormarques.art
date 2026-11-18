@@ -1,0 +1,178 @@
+/* Animação da logo se formando (loadscreen e confirmação do formulário).
+   IMALogo(container, { invert: true }) desenha a versão preta para fundo branco. */
+(function () {
+  'use strict';
+  window.IMALogo = function (container, opts) {
+    opts = opts || {};
+    var invert = !!opts.invert;
+    var ns = 'http://www.w3.org/2000/svg';
+    container.innerHTML = '<svg viewBox="0 0 2250 2250" xmlns="' + ns + '" aria-hidden="true" focusable="false">' +
+      '<g class="la-logo"><g class="la-construct"><path class="la-shape" fill-rule="evenodd"/>' +
+      '<path class="la-outline" fill="none" stroke="' + (invert ? '#000' : '#fff') + '" stroke-width="3" vector-effect="non-scaling-stroke" opacity="0"/>' +
+      '<g class="la-handles"></g></g>' +
+      '<rect class="la-dot" x="594" y="867" width="141" height="141" rx="22" fill="' + (invert ? '#000' : '#fff') + '" transform="scale(0)"/></g></svg>';
+    var svg = container.querySelector('svg');
+    const E = {
+      linear: t => t,
+      inCubic: t => t * t * t,
+      outCubic: t => 1 - Math.pow(1 - t, 3),
+      inOutCubic: t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+      outQuart: t => 1 - Math.pow(1 - t, 4),
+      outExpo: t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
+      inOutExpo: t => t === 0 ? 0 : t === 1 ? 1 : t < .5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2,
+      outBack: t => { const c1 = 1.4, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); },
+    };
+    
+    /* Geometria final (medida no quadro 06) */
+    const G = {
+      footW: 104,
+      body: { x: 801, y: 867, w: 693, h: 328, r: 18 },
+      holes: [ { dx: 141, w: 141 }, { dx: 423, w: 132 } ], holeDy: 95, holeH: 140, holeR: 10,
+      stemL: 282, stemR: 423, footL: 178, footH: 94, descH: 188, descR: 40, footR: 8,
+      armW: 162, armH: 95, armR: 10,
+      handle: 30,
+    };
+    
+    /* Timeline: valor inicial + segmentos [início, fim, valor final, easing] */
+    const DURATION = 3.98;
+    const T = {
+      intro:   [0,    [0.20, 0.50, 1, 'outBack']],
+      bx:      [1110, [0.55, 1.00, 1052, 'inOutCubic'], [1.05, 1.65, 778.5, 'inOutExpo'], [1.72, 2.02, 801, 'inOutCubic']],
+      by:      [1110, [0.55, 1.00, 1052, 'inOutCubic'], [1.05, 1.65, 961,   'inOutExpo'], [1.72, 2.02, 867, 'inOutCubic']],
+      bw:      [30,   [0.55, 1.00, 146,  'inOutCubic'], [1.05, 1.65, 693, 'inOutExpo']],
+      bh:      [30,   [0.55, 1.00, 146,  'inOutCubic'], [1.05, 1.65, 328, 'inOutExpo']],
+      r:       [3,    [0.55, 1.00, 8,    'inOutCubic'], [1.05, 1.65, 18,  'inOutExpo']],
+      rTR:     [3,    [0.55, 1.00, 8,    'inOutCubic'], [1.05, 1.65, 18,  'inOutExpo'], [2.48, 2.58, 0, 'inCubic']],
+      gray:    [255,  [0.55, 0.95, 102,  'inOutCubic'], [1.05, 1.65, 77,  'inOutCubic'], [1.72, 2.02, 102, 'inOutCubic'], [2.38, 2.75, 255, 'outCubic']],
+      outline: [0,    [0.70, 0.90, 1, 'outCubic'], [2.32, 2.52, 0, 'inCubic']],
+      handles: [0,    [0.72, 0.95, 1, 'outBack'],  [2.32, 2.50, 0, 'inCubic']],
+      split:   [0,    [1.05, 1.50, 1, 'inOutCubic']],
+      holes:   [0,    [1.36, 1.74, 1, 'outQuart']],
+      stem:    [0,    [1.78, 2.20, 188, 'inOutCubic']],                                  // haste desce num movimento só (passa pelo quadro 4.5)
+      foot:    [0,    [2.04, 2.28, 104, 'outCubic']],                                   // pé cresce para a esquerda
+      descR:   [0,    [2.06, 2.28, 40, 'outCubic']],
+      arm:     [0,    [2.58, 2.94, 1, 'outExpo']],
+      dot:     [0,    [2.64, 2.98, 1, 'outBack']],
+      exit:    [0,    [3.50, 3.98, 1, 'inOutCubic']],
+    };
+    
+    function val(track, t) {
+      let v = track[0];
+      for (let i = 1; i < track.length; i++) {
+        const [t0, t1, to, ease] = track[i];
+        if (t >= t1) { v = to; continue; }
+        if (t > t0) v = v + (to - v) * E[ease]((t - t0) / (t1 - t0));
+        break;
+      }
+      return v;
+    }
+    function stateAt(t) { const s = {}; for (const k in T) s[k] = val(T[k], t); return s; }
+    
+    /* ---------- desenho ---------- */
+    const $ = sel => svg.querySelector(sel);
+    const shape = $('.la-shape'), outline = $('.la-outline'), handlesG = $('.la-handles'), dot = $('.la-dot'),
+          construct = $('.la-construct'), logo = $('.la-logo');
+    const ink = invert ? '#000' : '#fff';
+    const f = n => Math.round(n * 100) / 100;
+    
+    function roundRect(x, y, w, h, r) {
+      r = Math.max(0, Math.min(r, w / 2, h / 2));
+      return `M${f(x + r)},${f(y)}H${f(x + w - r)}A${f(r)},${f(r)} 0 0 1 ${f(x + w)},${f(y + r)}V${f(y + h - r)}` +
+             `A${f(r)},${f(r)} 0 0 1 ${f(x + w - r)},${f(y + h)}H${f(x + r)}A${f(r)},${f(r)} 0 0 1 ${f(x)},${f(y + h - r)}` +
+             `V${f(y + r)}A${f(r)},${f(r)} 0 0 1 ${f(x + r)},${f(y)}Z`;
+    }
+    
+    function holeRects(s) {
+      if (s.holes <= 0.001) return [];
+      return G.holes.map(h => {
+        const sx = s.bw / G.body.w, sy = s.bh / G.body.h;   // acompanha a largura do corpo enquanto ele cresce
+        const w = h.w * sx * s.holes, hh = G.holeH * sy * s.holes;
+        const cx = s.bx + (h.dx + h.w / 2) * sx, cy = s.by + (G.holeDy + G.holeH / 2) * sy;
+        return { x: cx - w / 2, y: cy - hh / 2, w, h: hh, r: G.holeR * s.holes };
+      });
+    }
+    
+    function pathFor(s) {
+      const { bx, by, bw, bh } = s;
+      const r = Math.min(s.r, bw / 2, bh / 2);
+      const A = (rad, x, y) => `A${f(rad)},${f(rad)} 0 0 1 ${f(x)},${f(y)}`;
+      let p = `M${f(bx + r)},${f(by)}`;
+      if (s.arm > 0.0005) {                                  // braço superior direito
+        const aw = G.armW * s.arm, xr = bx + bw + aw, ra = Math.min(G.armR, aw / 2);
+        p += `H${f(xr - ra)}${A(ra, xr, by + ra)}V${f(by + G.armH - ra)}${A(ra, xr - ra, by + G.armH)}H${f(bx + bw)}`;
+      } else {
+        const t = Math.min(s.rTR, bw / 2, bh / 2);
+        p += `H${f(bx + bw - t)}${A(t, bx + bw, by + t)}`;
+      }
+      p += `V${f(by + bh - r)}${A(r, bx + bw - r, by + bh)}`;
+      if (s.stem > 0.5) {                                    // haste e pé da descendente
+        const yb = by + bh, sL = bx + G.stemL, sR = bx + G.stemR, bot = yb + s.stem, ft = yb + G.footH;
+        const rb = Math.min(s.descR, (sR - sL) / 2, s.stem / 2);
+        const W = s.stem > G.footH + 1 ? s.foot : 0, fL = sL - W, rf = Math.min(G.footR * (W / G.footW), W / 2, (bot - ft) / 2);
+        p += `H${f(sR)}V${f(bot - rb)}${A(rb, sR - rb, bot)}`;
+        if (W > 0.5) p += `H${f(fL + rf)}${A(rf, fL, bot - rf)}V${f(ft + rf)}${A(rf, fL + rf, ft)}H${f(sL)}V${f(yb)}`;
+        else p += `H${f(sL)}V${f(yb)}`;
+      }
+      p += `H${f(bx + r)}${A(r, bx, by + bh - r)}V${f(by + r)}${A(r, bx + r, by)}Z`;
+      for (const h of holeRects(s)) p += roundRect(h.x, h.y, h.w, h.h, h.r);
+      return p;
+    }
+    
+    function anchors(s) {
+      const pts = [];
+      const { bx, by, bw, bh } = s, r = Math.min(s.r, bw / 2, bh / 2);
+      if (s.split < 0.02) {
+        pts.push([bx, by, 1], [bx + bw, by, 1], [bx + bw, by + bh, 1], [bx, by + bh, 1]);
+      } else {
+        const k = r * s.split;
+        pts.push([bx + k, by, 1], [bx, by + k, 1], [bx + bw - k, by, 1], [bx + bw, by + k, 1],
+                 [bx + bw, by + bh - k, 1], [bx + bw - k, by + bh, 1], [bx + k, by + bh, 1], [bx, by + bh - k, 1]);
+      }
+      const hl = Math.min(1, s.holes * 2);
+      for (const h of holeRects(s)) pts.push([h.x, h.y, hl], [h.x + h.w, h.y, hl], [h.x + h.w, h.y + h.h, hl], [h.x, h.y + h.h, hl]);
+      if (s.stem > 0.5) {
+        const l = Math.min(1, s.stem / 30), yb = by + bh, sL = bx + G.stemL, sR = bx + G.stemR, bot = yb + s.stem, ft = yb + G.footH;
+        const rb = Math.min(s.descR, s.stem / 2), W = s.stem > G.footH + 1 ? s.foot : 0;
+        pts.push([sL, yb, l], [sR, yb, l], [sR, bot - rb, l]);
+        if (rb > 1) pts.push([sR - rb, bot, l]);
+        if (W > 0.5) { const wl = Math.min(1, W / 30); pts.push([sL - W, bot, wl], [sL - W, ft, wl], [sL, ft, wl]); }
+        else pts.push([sL, bot, l]);
+      }
+      return pts;
+    }
+    
+    const pool = [];
+    function drawHandles(s) {
+      const pts = s.handles > 0.001 ? anchors(s) : [];
+      while (pool.length < pts.length) {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        el.setAttribute('fill', ink); handlesG.appendChild(el); pool.push(el);
+      }
+      pool.forEach((el, i) => {
+        if (i >= pts.length) { el.setAttribute('display', 'none'); return; }
+        const [x, y, l] = pts[i], size = G.handle * s.handles * l;
+        el.removeAttribute('display');
+        el.setAttribute('x', f(x - size / 2)); el.setAttribute('y', f(y - size / 2));
+        el.setAttribute('width', f(Math.max(0, size))); el.setAttribute('height', f(Math.max(0, size)));
+      });
+    }
+    
+    function render(t) {
+      const s = stateAt(t);
+      const d = pathFor(s);
+      const g = invert ? 255 - Math.round(s.gray) : Math.round(s.gray);
+      shape.setAttribute('d', d);
+      shape.setAttribute('fill', `rgb(${g},${g},${g})`);
+      outline.setAttribute('d', d);
+      outline.setAttribute('opacity', f(s.outline));
+      drawHandles(s);
+      construct.setAttribute('transform', `translate(1125 1125) scale(${f(Math.max(0, s.intro))}) translate(-1125 -1125)`);
+      dot.setAttribute('transform', `translate(664.5 937.5) scale(${f(Math.max(0, s.dot))}) translate(-664.5 -937.5)`);
+      const ex = s.exit;
+      logo.setAttribute('transform', `translate(1125 1125) scale(${f(1 - 0.06 * ex)}) translate(-1125 -1125)`);
+      if (opts.onExit) opts.onExit(ex);
+    }
+    render(0);
+    return { render: render, duration: DURATION };
+  };
+})();
