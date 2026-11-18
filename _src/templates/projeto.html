@@ -18,12 +18,12 @@
 </section>
 {% for img in case.images %}
 <figure class="case-img" data-reveal>{{ picture(img, project.title ~ ' — ' ~ loop.index, '(max-width: 1440px) 100vw, 1416px') }}</figure>
-{% if loop.index == case.after_image %}
+{% for sec in c.sections if sec.after == loop.index %}
 <section class="split split--center">
-  <div class="split__info" data-reveal><h2 class="display">{{ c.after_title }}</h2></div>
-  <div class="split__text" data-reveal><p class="lead">{{ c.after_text }}</p></div>
+  <div class="split__info" data-reveal><h2 class="display">{{ sec.title }}</h2></div>
+  <div class="split__text" data-reveal><p class="lead">{{ sec.text }}</p></div>
 </section>
-{% endif %}
+{% endfor %}
 {% endfor %}
 {{ cta_popup(t, lang, prefix, case.others) }}
 {% endblock %}
