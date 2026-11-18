@@ -1,0 +1,75 @@
+# Case do Plano Perfeito Black Friday (conteúdo vindo do case no Behance, publicado em 19/out/2026).
+# Lista [a, b] = imagens lado a lado. { img, max } = imagem longa centralizada num bloco escuro (a landing page).
+images:
+  - plano-perfeito-01
+  - [plano-perfeito-02, plano-perfeito-03, plano-perfeito-04]
+  - plano-perfeito-05
+  - [plano-perfeito-06, plano-perfeito-07, plano-perfeito-08]
+  - plano-perfeito-09
+  - plano-perfeito-10
+  - [plano-perfeito-11, plano-perfeito-12]
+  - plano-perfeito-13
+  - plano-perfeito-14
+  - plano-perfeito-15
+  - plano-perfeito-16
+  - plano-perfeito-17
+  - [plano-perfeito-18, plano-perfeito-19]
+  - plano-perfeito-20
+  - plano-perfeito-21
+  - { img: plano-perfeito-landing, max: 900, alt: landing page }
+others: [zoppy, alem-da-marca]
+pt:
+  tags: [Identidade Visual, Evento, Landing Page]
+  subtitle: Identidade visual de um evento do palco à tela.
+  intro: >-
+    A Black Friday é uma das datas mais decisivas do ano para quem tem loja, e também uma das mais mal planejadas. Muitos
+    lojistas chegam a novembro sem estratégia definida para estoque, oferta e comunicação. O Plano Perfeito para Black
+    Friday nasceu para resolver isso, com um evento presencial e uma aula gratuita de Letícia Vaz, fundadora da Letícia Vaz
+    Store e uma das vozes mais influentes do empreendedorismo no Brasil, transmitido ao vivo no YouTube para lojistas de
+    todo o país.
+  facts:
+    - { label: Projeto, values: [Identidade visual, Evento presencial e online, Landing page] }
+    - { label: Equipe, values: [Igor Marques] }
+  sections:
+    - after: 5
+      title: O desafio
+      text: >-
+        O conteúdo central do evento era um método, um plano em 6 etapas construído a partir da experiência real de
+        Letícia como empresária. O desafio de design era dar a esse método uma identidade própria, que funcionasse em dois
+        ambientes ao mesmo tempo (o palco e a tela) e que transmitisse clareza, urgência e autoridade sem competir com a
+        presença da Letícia.
+    - after: 15
+      title: Do palco para a tela
+      text: >-
+        O sistema visual foi pensado desde o início para funcionar com o mesmo peso no ambiente online, para que quem
+        acompanhasse de casa tivesse uma experiência tão exclusiva quanto quem estava na plateia. A landing page foi o
+        primeiro ponto de contato desse público, com um objetivo claro de captar leads qualificados para a transmissão. O
+        conceito do evento virou uma estrutura de conversão, em que cada seção conduz o lojista da identificação com o
+        problema até a inscrição, e quem se inscreve já sente, antes da live começar, que está entrando em algo preparado
+        com cuidado.
+en:
+  tags: [Visual Identity, Event, Landing Page]
+  subtitle: An event identity, from stage to screen.
+  intro: >-
+    Black Friday is one of the most decisive dates of the year for store owners, and one of the most poorly planned. Many
+    arrive in November with no clear strategy for inventory, offers or communication. The Perfect Black Friday Plan was
+    created to change that, with an in-person event featuring a free class by Letícia Vaz, founder of Letícia Vaz Store
+    and one of Brazil's most influential business voices, streamed live on YouTube to store owners nationwide.
+  facts:
+    - { label: Project, values: [Visual identity, In-person and online event, Landing page] }
+    - { label: Team, values: [Igor Marques] }
+  sections:
+    - after: 5
+      title: The challenge
+      text: >-
+        The event's core was a method, a 6-step plan built from Letícia's real experience as a business owner. The design
+        challenge was to give this method its own identity, one that worked in two environments at once (stage and
+        screen) and conveyed clarity, urgency and authority without competing with Letícia's presence.
+    - after: 15
+      title: From stage to screen
+      text: >-
+        From the start, the visual system was built to carry the same weight online, so viewers watching from home had an
+        experience as exclusive as those in the room. The landing page was this audience's first point of contact, with a
+        clear goal of capturing qualified leads for the live stream. The event concept became a conversion structure, with
+        each section guiding store owners from recognizing the problem to signing up, so anyone who signs up feels, before
+        the stream even begins, that they're stepping into something carefully crafted.

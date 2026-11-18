@@ -11,7 +11,7 @@
   tags: { pt: [Rebranding, Identidade Visual], en: [Rebranding, Visual Identity] }
 - slug: plano-perfeito-black-friday
   title: Plano Perfeito Black Friday
-  url: https://www.behance.net/igormarquesfeliciano
+  case: true
   image: card-plano-perfeito-black-friday
   thumbs: [card-plano-perfeito-black-friday-thumb-1, card-plano-perfeito-black-friday-thumb-2, card-plano-perfeito-black-friday-thumb-3, card-plano-perfeito-black-friday-thumb-4, card-plano-perfeito-black-friday-thumb-5]
   filters: [identidade]

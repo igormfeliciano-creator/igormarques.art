@@ -27,6 +27,7 @@ main { display: flex; flex-direction: column; gap: 10px; }
 .img { width: 100%; height: 100%; object-fit: cover; background: var(--surface-subtle); }
 .img--pending { display: block; background: var(--surface-subtle)
   repeating-linear-gradient(45deg, transparent 0 12px, rgba(0,0,0,.025) 12px 24px); }
+.js video.img { opacity: 1; }
 .js img.img { opacity: 0; transition: opacity .5s var(--ease-out); }
 .js img.img.is-loaded { opacity: 1; }
 
@@ -257,6 +258,8 @@ main { display: flex; flex-direction: column; gap: 10px; }
 .case-img { margin: 0; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-subtle); }
 .case-img .img { height: auto; }
 .case-row { display: flex; gap: 10px; }
+.case-img--frame { background: var(--surface-inverse); padding: 48px 24px; display: flex; justify-content: center; }
+.case-img__inner { display: block; width: 100%; border-radius: var(--radius-md); overflow: hidden; }
 .case-row .case-img { min-width: 0; }
 
 /* ---------- "Vamos construir algo juntos?" + projetos ---------- */
@@ -357,6 +360,7 @@ main { display: flex; flex-direction: column; gap: 10px; }
   .photo-card__bar { left: 24px; right: 24px; bottom: 24px; }
   .fact { padding: 24px; }
   .case-row { flex-direction: column; }
+  .case-img--frame { padding: 12px; }
   .fact dt { font-size: var(--fs-body-lg); }
   .build { padding: 12px; }
   .build__info { padding: 24px; }

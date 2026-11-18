@@ -34,6 +34,7 @@ pt:
   facts:
     - { label: Cliente, values: [Zoppy] }
     - { label: Local, values: [Belo Horizonte, MG] }
+    - { label: Ano, values: ["2025"] }
     - { label: Projeto, values: [Identidade visual, Submarca, Aplicações] }
     - { label: Equipe, values: [Igor Marques] }
   sections:
@@ -60,6 +61,7 @@ en:
   facts:
     - { label: Client, values: [Zoppy] }
     - { label: Location, values: [Belo Horizonte, Brazil] }
+    - { label: Year, values: ["2025"] }
     - { label: Project, values: [Visual identity, Sub-brand, Applications] }
     - { label: Team, values: [Igor Marques] }
   sections:

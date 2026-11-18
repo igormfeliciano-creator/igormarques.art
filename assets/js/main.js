@@ -9,6 +9,19 @@
     else img.addEventListener('load', function () { img.classList.add('is-loaded'); }, { once: true });
   });
 
+  /* ---------- vídeos curtos (antigos GIFs): tocam só quando estão na tela ---------- */
+  var vids = document.querySelectorAll('video[data-autoplay]');
+  if (vids.length && 'IntersectionObserver' in window && !reduce) {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { v.preload = 'auto'; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+        else v.pause();
+      });
+    }, { rootMargin: '200px 0px' });
+    vids.forEach(function (v) { vio.observe(v); });
+  }
+
   /* ---------- seções aparecem uma vez ao entrar na tela ---------- */
   function startReveal() {
     var items = document.querySelectorAll('[data-reveal]');

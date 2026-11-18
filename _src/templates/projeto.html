@@ -17,7 +17,11 @@
   </dl>
 </section>
 {% for img in case.images %}
-{% if img is string %}
+{% if img is mapping %}
+<figure class="case-img case-img--frame" data-reveal>
+  <span class="case-img__inner" style="max-width: {{ img.max }}px">{{ picture(img.img, project.title ~ ' — ' ~ (img.alt or loop.index), '(max-width: 768px) 100vw, ' ~ img.max ~ 'px') }}</span>
+</figure>
+{% elif img is string %}
 <figure class="case-img" data-reveal>{{ picture(img, project.title ~ ' — ' ~ loop.index, '(max-width: 1440px) 100vw, 1416px') }}</figure>
 {% else %}
 <div class="case-row" data-reveal>

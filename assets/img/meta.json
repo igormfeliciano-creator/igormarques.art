@@ -5,7 +5,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.576747
  },
  "card-alem-da-marca-thumb-2": {
   "w": 360,
@@ -13,7 +14,8 @@
   "sizes": [
    360
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.578353
  },
  "card-alem-da-marca-thumb-3": {
   "w": 320,
@@ -21,7 +23,8 @@
   "sizes": [
    320
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5800023
  },
  "card-alem-da-marca-thumb-4": {
   "w": 480,
@@ -29,7 +32,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5815556
  },
  "card-alem-da-marca-thumb-5": {
   "w": 480,
@@ -37,7 +41,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5830004
  },
  "card-alem-da-marca": {
   "w": 2160,
@@ -48,7 +53,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027072.094758
  },
  "card-libcode-thumb-1": {
   "w": 480,
@@ -56,7 +62,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.569264
  },
  "card-libcode-thumb-2": {
   "w": 480,
@@ -64,7 +71,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.570653
  },
  "card-libcode-thumb-3": {
   "w": 480,
@@ -72,7 +80,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5720978
  },
  "card-libcode-thumb-4": {
   "w": 480,
@@ -80,7 +89,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5735037
  },
  "card-libcode-thumb-5": {
   "w": 480,
@@ -88,7 +98,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5751495
  },
  "card-libcode": {
   "w": 2160,
@@ -99,7 +110,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027072.0935144
  },
  "card-plano-perfeito-black-friday-thumb-1": {
   "w": 480,
@@ -107,7 +119,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5615895
  },
  "card-plano-perfeito-black-friday-thumb-2": {
   "w": 480,
@@ -115,7 +128,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5631154
  },
  "card-plano-perfeito-black-friday-thumb-3": {
   "w": 480,
@@ -123,7 +137,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5646625
  },
  "card-plano-perfeito-black-friday-thumb-4": {
   "w": 480,
@@ -131,7 +146,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5661824
  },
  "card-plano-perfeito-black-friday-thumb-5": {
   "w": 480,
@@ -139,7 +155,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.567695
  },
  "card-plano-perfeito-black-friday": {
   "w": 2160,
@@ -150,7 +167,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027072.0918338
  },
  "card-zoppy-thumb-1": {
   "w": 480,
@@ -158,7 +176,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.555669
  },
  "card-zoppy-thumb-2": {
   "w": 480,
@@ -166,7 +185,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5571914
  },
  "card-zoppy-thumb-3": {
   "w": 480,
@@ -174,7 +194,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5586338
  },
  "card-zoppy-thumb-5": {
   "w": 480,
@@ -182,7 +203,8 @@
   "sizes": [
    480
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027133.5601146
  },
  "card-zoppy": {
   "w": 2160,
@@ -193,7 +215,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027072.0893586
  },
  "home-hero": {
   "w": 2880,
@@ -204,7 +227,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027051.661502
  },
  "home-sobre-foto": {
   "w": 2160,
@@ -215,7 +239,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027072.0966542
  },
  "logo-tipografia-a": {
   "w": 1500,
@@ -225,7 +250,8 @@
    960,
    1440
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795027051.6668217
  },
  "logo-tipografia-b": {
   "w": 1500,
@@ -235,7 +261,8 @@
    960,
    1440
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028746.8155985
  },
  "sobre-foto-1": {
   "w": 2160,
@@ -246,7 +273,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028746.807748
  },
  "sobre-foto-2": {
   "w": 2160,
@@ -257,7 +285,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028746.8117466
  },
  "zoppy-01": {
   "w": 2160,
@@ -268,7 +297,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028746.8174193
  },
  "zoppy-02": {
   "w": 2160,
@@ -279,7 +309,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028746.8209093
  },
  "zoppy-03": {
   "w": 2160,
@@ -290,7 +321,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028746.8228946
  },
  "zoppy-04": {
   "w": 2160,
@@ -301,7 +333,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028761.064275
  },
  "zoppy-05": {
   "w": 2160,
@@ -312,7 +345,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028761.1292887
  },
  "zoppy-06": {
   "w": 2160,
@@ -323,7 +357,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028761.1958013
  },
  "zoppy-07": {
   "w": 2160,
@@ -334,7 +369,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028761.2638714
  },
  "zoppy-08": {
   "w": 2160,
@@ -345,7 +381,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028761.3180518
  },
  "zoppy-09": {
   "w": 2160,
@@ -356,7 +393,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028761.364115
  },
  "zoppy-10": {
   "w": 2160,
@@ -367,7 +405,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028824.9875798
  },
  "zoppy-11": {
   "w": 2160,
@@ -378,7 +417,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028824.990761
  },
  "zoppy-12": {
   "w": 2160,
@@ -389,7 +429,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028824.9930823
  },
  "zoppy-13": {
   "w": 2160,
@@ -400,7 +441,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028824.9953399
  },
  "zoppy-14": {
   "w": 2160,
@@ -411,7 +453,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028825.0028439
  },
  "zoppy-15": {
   "w": 2160,
@@ -422,7 +465,8 @@
    1440,
    2160
   ],
-  "alpha": true
+  "alpha": true,
+  "src_mtime": 1795028824.9974525
  },
  "zoppy-16": {
   "w": 2160,
@@ -433,16 +477,8 @@
    1440,
    2160
   ],
-  "alpha": true
- },
- "alem-da-marca-01": {
-  "w": 1920,
-  "h": 1080,
-  "sizes": [
-   960,
-   1440
-  ],
-  "alpha": false
+  "alpha": true,
+  "src_mtime": 1795028825.0005748
  },
  "alem-da-marca-02": {
   "w": 2160,
@@ -453,7 +489,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030248.61403
  },
  "alem-da-marca-03": {
   "w": 2160,
@@ -464,7 +501,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030248.7180297
  },
  "alem-da-marca-04": {
   "w": 2160,
@@ -475,7 +513,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030248.8220298
  },
  "alem-da-marca-05": {
   "w": 2160,
@@ -486,7 +525,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030248.92603
  },
  "alem-da-marca-06": {
   "w": 2160,
@@ -497,7 +537,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030249.03803
  },
  "alem-da-marca-07": {
   "w": 2160,
@@ -508,7 +549,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030249.15003
  },
  "alem-da-marca-08": {
   "w": 2160,
@@ -519,7 +561,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030249.2660298
  },
  "alem-da-marca-09": {
   "w": 2160,
@@ -530,7 +573,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030249.3980298
  },
  "alem-da-marca-10": {
   "w": 2160,
@@ -541,7 +585,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030249.5140297
  },
  "alem-da-marca-11": {
   "w": 2160,
@@ -552,7 +597,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030249.6180298
  },
  "alem-da-marca-12": {
   "w": 2160,
@@ -563,7 +609,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030249.7500298
  },
  "alem-da-marca-13": {
   "w": 2160,
@@ -574,7 +621,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030249.94603
  },
  "alem-da-marca-14": {
   "w": 2160,
@@ -585,7 +633,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030250.51403
  },
  "alem-da-marca-15": {
   "w": 2160,
@@ -596,7 +645,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030251.20603
  },
  "alem-da-marca-16": {
   "w": 2160,
@@ -607,7 +657,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030251.55403
  },
  "alem-da-marca-17": {
   "w": 2160,
@@ -618,7 +669,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030252.91803
  },
  "alem-da-marca-18": {
   "w": 2160,
@@ -629,7 +681,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030251.8220298
  },
  "alem-da-marca-19": {
   "w": 2160,
@@ -640,7 +693,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030252.14603
  },
  "alem-da-marca-20": {
   "w": 2160,
@@ -651,7 +705,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030252.3180299
  },
  "alem-da-marca-21": {
   "w": 2160,
@@ -662,7 +717,8 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030252.50203
  },
  "alem-da-marca-22": {
   "w": 2160,
@@ -673,6 +729,263 @@
    1440,
    2160
   ],
-  "alpha": false
+  "alpha": false,
+  "src_mtime": 1795030252.7460299
+ },
+ "plano-perfeito-01": {
+  "w": 1920,
+  "h": 1080,
+  "sizes": [
+   480,
+   960,
+   1440,
+   1920
+  ],
+  "alpha": false,
+  "src_mtime": 1795031135.3940616
+ },
+ "plano-perfeito-02": {
+  "w": 1792,
+  "h": 2400,
+  "sizes": [
+   480,
+   960,
+   1440,
+   1792
+  ],
+  "alpha": false,
+  "src_mtime": 1795031135.4860616
+ },
+ "plano-perfeito-03": {
+  "w": 1696,
+  "h": 2528,
+  "sizes": [
+   480,
+   960,
+   1440,
+   1696
+  ],
+  "alpha": false,
+  "src_mtime": 1795031135.5860615
+ },
+ "plano-perfeito-04": {
+  "w": 1696,
+  "h": 2528,
+  "sizes": [
+   480,
+   960,
+   1440,
+   1696
+  ],
+  "alpha": false,
+  "src_mtime": 1795031135.6860616
+ },
+ "plano-perfeito-05": {
+  "w": 2160,
+  "h": 400,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031135.7060616
+ },
+ "plano-perfeito-06": {
+  "w": 2160,
+  "h": 2160,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031135.7780616
+ },
+ "plano-perfeito-07": {
+  "w": 2160,
+  "h": 2160,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031135.8340616
+ },
+ "plano-perfeito-08": {
+  "w": 2160,
+  "h": 2160,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031135.8900616
+ },
+ "plano-perfeito-09": {
+  "w": 2160,
+  "h": 1215,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031135.9900615
+ },
+ "plano-perfeito-10": {
+  "w": 2160,
+  "h": 1440,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031136.1660616
+ },
+ "plano-perfeito-11": {
+  "w": 2160,
+  "h": 2880,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031136.9580615
+ },
+ "plano-perfeito-12": {
+  "w": 1350,
+  "h": 1080,
+  "sizes": [
+   480,
+   960,
+   1350
+  ],
+  "alpha": false,
+  "src_mtime": 1795031136.9900615
+ },
+ "plano-perfeito-13": {
+  "w": 2160,
+  "h": 1440,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031137.2020617
+ },
+ "plano-perfeito-14": {
+  "w": 2160,
+  "h": 1440,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031137.4420617
+ },
+ "plano-perfeito-15": {
+  "w": 2160,
+  "h": 1620,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031137.6100616
+ },
+ "plano-perfeito-16": {
+  "w": 2160,
+  "h": 1440,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031137.8380616
+ },
+ "plano-perfeito-17": {
+  "w": 2160,
+  "h": 1440,
+  "sizes": [
+   480,
+   960,
+   1440,
+   2160
+  ],
+  "alpha": false,
+  "src_mtime": 1795031138.0340617
+ },
+ "plano-perfeito-18": {
+  "w": 1696,
+  "h": 2528,
+  "sizes": [
+   480,
+   960,
+   1440,
+   1696
+  ],
+  "alpha": false,
+  "src_mtime": 1795031138.1300616
+ },
+ "plano-perfeito-19": {
+  "w": 1696,
+  "h": 2528,
+  "sizes": [
+   480,
+   960,
+   1440,
+   1696
+  ],
+  "alpha": false,
+  "src_mtime": 1795031138.2220616
+ },
+ "alem-da-marca-01": {
+  "w": 1920,
+  "h": 1080,
+  "video": true,
+  "src_mtime": 1795030252.92203
+ },
+ "plano-perfeito-20": {
+  "w": 1920,
+  "h": 360,
+  "video": true,
+  "src_mtime": 1795031138.2300615
+ },
+ "plano-perfeito-21": {
+  "w": 960,
+  "h": 540,
+  "video": true,
+  "src_mtime": 1795031138.2420616
+ },
+ "plano-perfeito-landing": {
+  "w": 1200,
+  "h": 6168,
+  "sizes": [
+   480,
+   960,
+   1200
+  ],
+  "alpha": false,
+  "src_mtime": 1795031138.3780615
  }
 }

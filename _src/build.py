@@ -82,9 +82,11 @@ def build_images():
         if src.suffix.lower() not in ('.jpg', '.jpeg', '.png', '.webp', '.gif'):
             continue
         name = src.stem
+        if name in meta and meta[name].get('src_mtime') == src.stat().st_mtime:
+            continue  # já convertida e sem mudanças
         im = Image.open(src)
         if getattr(im, 'n_frames', 1) > 1:
-            build_animation(im, name, meta)
+            build_animation(src, im, name, meta)
             continue
         has_alpha = im.mode in ('RGBA', 'LA') or 'transparency' in im.info
         im = im.convert('RGBA' if has_alpha else 'RGB')
@@ -92,33 +94,39 @@ def build_images():
         sizes = []
         for target in WIDTHS:
             if target > w and sizes:
-                break
+                if w > sizes[-1] * 1.1:
+                    target = w
+                else:
+                    break
             tw = min(target, w)
             th = round(h * tw / w)
             out = IMG_OUT / f'{name}-{tw}.webp'
             im.resize((tw, th), Image.LANCZOS).save(out, 'WEBP', quality=82, method=6)
             sizes.append(tw)
-        meta[name] = {'w': w, 'h': h, 'sizes': sizes, 'alpha': has_alpha}
+            if tw == w:
+                break
+        meta[name] = {'w': w, 'h': h, 'sizes': sizes, 'alpha': has_alpha, 'src_mtime': src.stat().st_mtime}
         print(f'img  {name}: {w}x{h} -> {sizes}')
     (IMG_OUT / 'meta.json').write_text(json.dumps(meta, indent=1))
 
-def build_animation(im, name, meta):
-    """GIF animado vira WebP animado (bem menor), nas larguras 960 e 1440."""
-    from PIL import Image, ImageSequence
+def build_animation(src, im, name, meta):
+    """GIF animado vira vídeo MP4 em loop (bem menor que GIF/WebP) + um quadro de capa."""
+    import subprocess
+    from PIL import Image
     w, h = im.size
-    frames, durations = [], []
-    for fr in ImageSequence.Iterator(im):
-        frames.append(fr.convert('RGB'))
-        durations.append(fr.info.get('duration', 80))
-    sizes = []
-    for target in (960, 1440):
-        tw = min(target, w); th = round(h * tw / w)
-        out = [f.resize((tw, th), Image.LANCZOS) for f in frames]
-        out[0].save(IMG_OUT / f'{name}-{tw}.webp', 'WEBP', save_all=True, append_images=out[1:],
-                    duration=durations, loop=0, quality=80, method=6)
-        sizes.append(tw)
-    meta[name] = {'w': w, 'h': h, 'sizes': sizes, 'alpha': False}
-    print(f'anim {name}: {w}x{h} {len(frames)} quadros -> {sizes}')
+    tw = min(1440, w) // 2 * 2
+    th = round(h * tw / w) // 2 * 2
+    out = IMG_OUT / f'{name}.mp4'
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(src), '-movflags', '+faststart', '-an',
+                    '-vf', f'scale={tw}:{th}:flags=lanczos', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '24',
+                    '-pix_fmt', 'yuv420p', str(out)], check=True)
+    im.seek(0)
+    im.convert('RGB').resize((tw, th), Image.LANCZOS).save(IMG_OUT / f'{name}-poster.webp', 'WEBP', quality=80)
+    for old in IMG_OUT.glob(f'{name}-*.webp'):
+        if not old.name.endswith('-poster.webp'):
+            old.unlink()
+    meta[name] = {'w': w, 'h': h, 'video': True, 'src_mtime': src.stat().st_mtime}
+    print(f'video {name}: {w}x{h} -> {tw}x{th} mp4 ({out.stat().st_size // 1024} KB)')
 
 def picture(name, alt='', sizes='100vw', cls='', eager=False):
     meta = image_meta().get(name)
@@ -126,6 +134,10 @@ def picture(name, alt='', sizes='100vw', cls='', eager=False):
     if not meta:
         # imagem ainda não exportada: bloco neutro no lugar
         return Markup(f'<span class="img img--pending {cls}" role="img" aria-label="{alt}" data-name="{name}"></span>')
+    if meta.get('video'):
+        return Markup(f'<video class="img {cls}" muted loop playsinline preload="none" data-autoplay '
+                      f'poster="/assets/img/{name}-poster.webp" width="{meta["w"]}" height="{meta["h"]}" aria-label="{alt}">'
+                      f'<source src="/assets/img/{name}.mp4" type="video/mp4"></video>')
     srcset = ', '.join(f'/assets/img/{name}-{w}.webp {w}w' for w in meta['sizes'])
     default = f'/assets/img/{name}-{meta["sizes"][min(1, len(meta["sizes"]) - 1)]}.webp'
     return Markup(f'<img {attrs} src="{default}" srcset="{srcset}" sizes="{sizes}" width="{meta["w"]}" height="{meta["h"]}">')
