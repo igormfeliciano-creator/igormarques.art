@@ -37,8 +37,29 @@
   /* ---------- navbar compacta ao rolar ---------- */
   var nav = document.querySelector('[data-navbar]');
   if (nav) {
-    var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 80); };
+    var inner = nav.querySelector('.navbar__inner');
+    var desktop = window.matchMedia('(min-width: 769px)');
+    var settle;
+    // A versão compacta tem a largura do próprio conteúdo (cresce junto com o menu aberto).
+    // Para animar a troca entre "largura total" e "largura do conteúdo", medimos as duas e animamos em px.
+    var setScrolled = function (on) {
+      if (nav.classList.contains('is-scrolled') === on) return;
+      if (!desktop.matches || reduce) { nav.classList.toggle('is-scrolled', on); inner.style.width = ''; return; }
+      var from = inner.getBoundingClientRect().width;
+      inner.style.transition = 'none';
+      nav.classList.toggle('is-scrolled', on);
+      inner.style.width = '';
+      var to = inner.getBoundingClientRect().width;
+      inner.style.width = from + 'px';
+      void inner.offsetWidth;
+      inner.style.transition = '';
+      inner.style.width = to + 'px';
+      clearTimeout(settle);
+      settle = setTimeout(function () { inner.style.width = ''; }, 480);
+    };
+    var onScroll = function () { setScrolled(window.scrollY > 80); };
     window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    desktop.addEventListener && desktop.addEventListener('change', function () { inner.style.width = ''; });
   }
 
   /* ---------- menus (hambúrguer) ---------- */
