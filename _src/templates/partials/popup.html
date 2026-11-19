@@ -3,12 +3,10 @@
 <dialog class="dialog" data-form-dialog aria-labelledby="popup-titulo">
   <div class="dialog__inner">
     <div class="dialog__top">
-      <span class="dialog__logo">{{ logo_svg('logo', 'Igor Marques Art') }}</span>
       <button class="dialog__close" type="button" data-close-form aria-label="{{ t.popup.close }}"><span aria-hidden="true"><i></i><i></i></span></button>
     </div>
     <div class="dialog__body">
       <div class="dialog__intro">
-        <span class="dialog__symbol">{{ logo_svg('logo', 'Igor Marques Art') }}</span>
         <h2 id="popup-titulo" class="dialog__title">{{ t.popup.title_project if popup == 'project' else t.popup.title_default }}</h2>
         <p>{{ t.popup.text }}</p>
         {{ socials('black') }}

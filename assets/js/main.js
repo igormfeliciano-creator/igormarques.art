@@ -142,7 +142,7 @@
       filterBar.querySelectorAll('[data-filter]').forEach(function (o) {
         var on = o === b;
         o.setAttribute('aria-pressed', on ? 'true' : 'false');
-        o.classList.toggle('tag--white', on); o.classList.toggle('tag--black', !on);
+        o.classList.toggle('tag--black', on); o.classList.toggle('tag--white', !on);
       });
       cards.forEach(function (c) {
         var show = key === 'all' || c.dataset.filters.split(' ').indexOf(key) > -1;

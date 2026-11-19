@@ -5,7 +5,7 @@
   <h1 class="page-head__title">{{ t.projects_page.title }}</h1>
   <div class="filters" role="group" aria-label="{{ t.projects_page.filters_label }}" data-filters>
     {% for key, label in t.projects_page.filters.items() %}
-    <button type="button" class="tag {{ 'tag--white' if key == 'all' else 'tag--black' }}" data-filter="{{ key }}" aria-pressed="{{ 'true' if key == 'all' else 'false' }}">{{ label }}</button>
+    <button type="button" class="tag {{ 'tag--black' if key == 'all' else 'tag--white' }}" data-filter="{{ key }}" aria-pressed="{{ 'true' if key == 'all' else 'false' }}">{{ label }}</button>
     {% endfor %}
   </div>
 </section>
