@@ -140,7 +140,9 @@ main { display: flex; flex-direction: column; gap: 10px; }
 /* ---------- sobre mim (home) ---------- */
 .about { padding: 48px 24px; display: flex; gap: 12px; }
 .about__photo { flex: 1; max-width: 600px; border-radius: var(--radius-lg); overflow: hidden; }
-.about__photo .img { object-position: center 25%; }
+.about__photo { position: relative; min-height: 560px; }
+/* a foto acompanha a altura do bloco de texto e corta só a parte de baixo */
+.about__photo .img { position: absolute; inset: 0; object-position: center top; }
 .about__card { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: 48px;
   background: var(--surface-inverse); color: var(--text-inverse-secondary); border-radius: var(--radius-lg); }
 .about__content { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; font-size: var(--fs-body-sm); }
