@@ -140,6 +140,7 @@ main { display: flex; flex-direction: column; gap: 10px; }
 /* ---------- sobre mim (home) ---------- */
 .about { padding: 48px 24px; display: flex; gap: 12px; }
 .about__photo { flex: 1; max-width: 600px; border-radius: var(--radius-lg); overflow: hidden; }
+.about__photo .img { object-position: center 25%; }
 .about__card { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: 48px;
   background: var(--surface-inverse); color: var(--text-inverse-secondary); border-radius: var(--radius-lg); }
 .about__content { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; font-size: var(--fs-body-sm); }
@@ -270,7 +271,7 @@ main { display: flex; flex-direction: column; gap: 10px; }
 
 .photo-card { position: relative; min-height: 699px; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-subtle); }
 .photo-card--short { min-height: 453px; }
-.photo-card > .img { position: absolute; inset: 0; }
+.photo-card > .img { position: absolute; inset: 0; object-position: center 30%; }
 .photo-card__bar { position: absolute; left: 24px; right: 24px; bottom: 24px; display: flex; align-items: center; justify-content: space-between; }
 .botao-seta--sm { width: 52px; height: 52px; }
 
