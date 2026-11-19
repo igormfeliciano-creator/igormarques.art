@@ -9,7 +9,8 @@
     <h1 class="subtitle">{{ a.headline }}</h1>
     <p class="lead">{{ a.intro }}</p>
   </div>
-  <div class="photo-card" data-reveal>
+  <div class="photo-card photo-card--crop" data-reveal
+       style="--dx:.1738; --dy:.1570; --dw:.4956; --dh:.7923; --mcx:0; --mcy:.1226; --mcw:1; --mch:.8774">
     {{ picture('sobre-foto-1', a.photo1_alt, '(max-width: 768px) 100vw, 50vw') }}
     <div class="photo-card__bar">
       {{ socials('white') }}
@@ -28,7 +29,8 @@
 </section>
 <hr class="divisor divisor--page">
 <section class="split split--reverse-mobile">
-  <div class="photo-card photo-card--short" data-reveal>
+  <div class="photo-card photo-card--short photo-card--crop" data-reveal
+       style="--dx:0; --dy:0; --dw:1; --dh:1; --mcx:0; --mcy:.3467; --mcw:1; --mch:.3899">
     {{ picture('sobre-foto-2', a.photo2_alt, '(max-width: 768px) 100vw, 50vw') }}
     <div class="photo-card__bar">
       {{ socials('white') }}

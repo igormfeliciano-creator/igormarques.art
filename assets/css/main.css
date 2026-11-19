@@ -274,6 +274,11 @@ main { display: flex; flex-direction: column; gap: 10px; }
 .photo-card { position: relative; min-height: 699px; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-subtle); }
 .photo-card--short { min-height: 453px; }
 .photo-card > .img { position: absolute; inset: 0; object-position: center 30%; }
+/* recorte igual ao do Figma: --cx/--cy = canto do recorte, --cw/--ch = tamanho do recorte (fração da foto) */
+.photo-card--crop { --cx: var(--dx); --cy: var(--dy); --cw: var(--dw); --ch: var(--dh); }
+.photo-card--crop > .img { inset: auto; object-fit: cover; object-position: center;
+  width: calc(100% / var(--cw)); height: calc(100% / var(--ch));
+  left: calc(-100% * var(--cx) / var(--cw)); top: calc(-100% * var(--cy) / var(--ch)); }
 .photo-card__bar { position: absolute; left: 24px; right: 24px; bottom: 24px; display: flex; align-items: center; justify-content: space-between; }
 .botao-seta--sm { width: 52px; height: 52px; }
 
@@ -385,6 +390,7 @@ main { display: flex; flex-direction: column; gap: 10px; }
   .split--reverse-mobile { flex-direction: column; }
   .split > * { flex: none; }
   .photo-card, .photo-card--short { min-height: 0; height: 200px; }
+  .photo-card--crop { --cx: var(--mcx); --cy: var(--mcy); --cw: var(--mcw); --ch: var(--mch); }
   .photo-card__bar { left: 24px; right: 24px; bottom: 24px; }
   .fact { padding: 24px; }
   .case-row { flex-direction: column; }
