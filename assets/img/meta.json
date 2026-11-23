@@ -58,60 +58,60 @@
  },
  "card-libcode-thumb-1": {
   "w": 480,
-  "h": 311,
+  "h": 270,
   "sizes": [
    480
   ],
-  "alpha": true,
-  "src_mtime": 1795027133.569264
+  "alpha": false,
+  "src_mtime": 1795454480.1235158
  },
  "card-libcode-thumb-2": {
-  "w": 480,
-  "h": 201,
-  "sizes": [
-   480
-  ],
-  "alpha": true,
-  "src_mtime": 1795027133.570653
- },
- "card-libcode-thumb-3": {
   "w": 480,
   "h": 270,
   "sizes": [
    480
   ],
-  "alpha": true,
-  "src_mtime": 1795027133.5720978
+  "alpha": false,
+  "src_mtime": 1795454480.3275158
+ },
+ "card-libcode-thumb-3": {
+  "w": 480,
+  "h": 360,
+  "sizes": [
+   480
+  ],
+  "alpha": false,
+  "src_mtime": 1795454481.147516
  },
  "card-libcode-thumb-4": {
   "w": 480,
-  "h": 334,
+  "h": 360,
   "sizes": [
    480
   ],
-  "alpha": true,
-  "src_mtime": 1795027133.5735037
+  "alpha": false,
+  "src_mtime": 1795454482.039516
  },
  "card-libcode-thumb-5": {
   "w": 480,
-  "h": 320,
+  "h": 360,
   "sizes": [
    480
   ],
-  "alpha": true,
-  "src_mtime": 1795027133.5751495
+  "alpha": false,
+  "src_mtime": 1795454482.919516
  },
  "card-libcode": {
   "w": 2160,
-  "h": 1397,
+  "h": 1440,
   "sizes": [
    480,
    960,
    1440,
    2160
   ],
-  "alpha": true,
-  "src_mtime": 1795027072.0935144
+  "alpha": false,
+  "src_mtime": 1795454480.055516
  },
  "card-plano-perfeito-black-friday-thumb-1": {
   "w": 480,
