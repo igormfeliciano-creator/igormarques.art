@@ -1,0 +1,110 @@
+# Case da LibCode (texto da entrevista com o Igor, 20/nov/2026; imagens da pasta de apresentação do Behance).
+# Imagens: _src/img-src/libcode-NN.* na ordem abaixo. Listas [a, b] ficam lado a lado.
+# 01–03 marca e cores · 04–08 ilustrações · 09–14 digital · 15–24 aplicações físicas
+year: "2023–2024"
+images:
+  - libcode-01
+  - libcode-02
+  - libcode-03
+  - [libcode-04, libcode-05]
+  - libcode-06
+  - [libcode-07, libcode-08]
+  - libcode-09
+  - libcode-10
+  - libcode-11
+  - libcode-12
+  - libcode-13
+  - libcode-14
+  - libcode-15
+  - libcode-16
+  - [libcode-17, libcode-18]
+  - libcode-19
+  - libcode-20
+  - libcode-21
+  - libcode-22
+  - [libcode-23, libcode-24]
+others: [zoppy, alem-da-marca]
+pt:
+  tags: [Marca do Zero, Identidade Visual, Ilustração]
+  subtitle: Espaço produtivo para mentes criativas.
+  intro: >-
+    A LibCode é uma software house que desenvolve aplicativos multimídia para mobile, desktop e TV. Com três
+    programadores full stack e dois designers no mesmo time, entrega o projeto completo num só lugar. A empresa nasceu
+    sem uma marca definida e precisava se apresentar ao mercado como séria, confiável e profissional, sem perder o
+    jeito leve e sem burocracia que a diferenciava. Na conversa com os três sócios, a dor ficou clara: eles não queriam
+    parecer mais uma empresa de software.
+  facts:
+    - { label: Ano, values: ["2023–2024"] }
+    - { label: Projeto, values: [Marca do zero, Identidade visual, Ilustração, Aplicações] }
+    - { label: Equipe, values: [Igor Marques] }
+  sections:
+    - after: 1
+      title: Conceito
+      text: >-
+        O caminho foi fugir do azul corporativo e ir na direção oposta. A paleta aposta em laranjas quentes e vibrantes,
+        que trazem conforto sem deixar a marca infantil. A tipografia traduz a dualidade da empresa: uma fonte quadrada e
+        uniforme para o lado produtivo e tecnológico, e uma fonte curva e fluida para a criatividade. No logotipo, o {LIB}
+        entre chaves usa a primeira, e o "code", a segunda.
+    - after: 3
+      title: Ilustrações editoriais
+      text: >-
+        As ilustrações completam o universo da marca com humor sobre os assuntos do time. O Orc representa os designers,
+        que deixavam a IA fora da direção criativa: ele acaba de quebrar um robô e pichou um bloqueio à IA na parede. A
+        resposta vem do computador que grafitou "IA Rules!", em nome dos devs que usam a IA para acelerar o trabalho.
+        Completam a série o Dr. Frankenstein dando vida à marca, o Code Monkey, piada interna de quem às vezes programa
+        como primata e mesmo assim dá certo, e o sensei da técnica secreta: Ctrl+C, Ctrl+V.
+    - after: 6
+      title: Aplicações
+      text: >-
+        A identidade chegou a todos os pontos de contato, do site às redes sociais, das apresentações para clientes à
+        assinatura de e-mail e à papelaria. E foi também para dentro do escritório, em camisetas, canecas, adesivos,
+        bótons, crachás, wallpapers e itens decorativos.
+    - after: 20
+      title: Resultado
+      text: >-
+        A marca criou um forte sentimento de pertencimento. Quem fechava projeto com a LibCode se empolgava em conhecer
+        esse universo e entender como a operação funcionava, e o time passou a usar a marca com orgulho em camisas,
+        canecas e adesivos. A LibCode ganhou personalidade, posicionamento e relevância sem sacrificar uma gota do
+        profissionalismo.
+en:
+  tags: [Brand from Scratch, Visual Identity, Illustration]
+  subtitle: A productive space for creative minds.
+  intro: >-
+    LibCode is a software house that builds multimedia apps for mobile, desktop and TV. With three full stack developers
+    and two designers on the same team, it delivers the whole project in one place. The company started without a defined
+    brand and needed to present itself as serious, reliable and professional, without losing the light, red-tape-free way
+    of working that set it apart. In a conversation with the three partners, the pain was clear: they didn't want to look
+    like just another software company.
+  facts:
+    - { label: Year, values: ["2023–2024"] }
+    - { label: Project, values: [Brand from scratch, Visual identity, Illustration, Applications] }
+    - { label: Team, values: [Igor Marques] }
+  sections:
+    - after: 1
+      title: Concept
+      text: >-
+        The path was to steer away from corporate blue and go the opposite way. The palette relies on warm, vibrant
+        oranges that feel comfortable without making the brand childish. The typography translates the company's duality:
+        a square, uniform typeface for the productive, technical side, and a curved, fluid one for creativity. In the
+        logotype, the bracketed {LIB} uses the first, and "code" uses the second.
+    - after: 3
+      title: Editorial illustrations
+      text: >-
+        The illustrations complete the brand's universe with humor about the team's hot topics. The Orc stands for the
+        designers, who kept AI out of creative direction: he has just smashed a robot and sprayed an AI ban sign on the
+        wall. The answer comes from the computer that graffitied "IA Rules!" on behalf of the developers, who use AI to
+        speed up their work. The series is rounded out by Dr. Frankenstein bringing the brand to life, the Code Monkey, an
+        inside joke from devs who sometimes code like primates and it still works, and the sensei of the secret technique:
+        Ctrl+C, Ctrl+V.
+    - after: 6
+      title: Applications
+      text: >-
+        The identity reached every touchpoint, from the website to social media, from client presentations to email
+        signatures and stationery. It also made its way into the office, on T-shirts, mugs, stickers, pins, badges,
+        wallpapers and decorative items.
+    - after: 20
+      title: Results
+      text: >-
+        The brand created a strong sense of belonging. Clients who signed with LibCode were excited to discover this
+        universe and understand how the operation worked, and the team proudly wore the brand on shirts, mugs and stickers.
+        LibCode gained personality, positioning and relevance without sacrificing a drop of professionalism.

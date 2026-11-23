@@ -18,7 +18,7 @@
   tags: { pt: [Identidade Visual, Evento], en: [Visual Identity, Event] }
 - slug: libcode
   title: LibCode
-  url: https://www.behance.net/igormarquesfeliciano
+  case: true
   image: card-libcode
   thumbs: [card-libcode-thumb-1, card-libcode-thumb-2, card-libcode-thumb-3, card-libcode-thumb-4, card-libcode-thumb-5]
   filters: [do-zero, identidade]
