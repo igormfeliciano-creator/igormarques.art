@@ -380,6 +380,7 @@ main { display: flex; flex-direction: column; gap: 10px; }
   .navbar__inner { position: relative; }
 
   .hero { height: 479px; }
+  .hero--video { height: auto; aspect-ratio: 9 / 16; }   /* showreel vertical ocupa o painel inteiro */
   .notfound { height: auto; min-height: 479px; padding: 48px 24px; }
   .notfound__logo { width: 120px; }
   .projects { padding: 12px; }
