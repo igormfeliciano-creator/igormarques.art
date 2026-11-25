@@ -3,8 +3,11 @@
 
 {% block content %}
 {% if site.showreel %}
-<section class="hero" aria-label="Showreel">
-  <video class="hero__video" src="{{ site.showreel }}" autoplay muted loop playsinline data-autoplay></video>
+<section class="hero hero--video" aria-label="Showreel">
+  <video class="hero__video" muted loop playsinline preload="metadata" aria-hidden="true" data-showreel
+         data-src-desktop="{{ site.showreel.desktop }}" data-src-mobile="{{ site.showreel.mobile }}"
+         data-poster-desktop="{{ site.showreel.poster_desktop }}" data-poster-mobile="{{ site.showreel.poster_mobile }}"
+         poster="{{ site.showreel.poster_desktop }}"></video>
 </section>
 {% else %}
 <section class="hero hero--reel" aria-label="Igor Marques Art">

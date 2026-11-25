@@ -2,8 +2,14 @@
 url: https://igormarques.art
 # Endereço do Google Apps Script que recebe o formulário (preencher depois de implantar)
 form_endpoint: "https://script.google.com/macros/s/AKfycbxbSXvQoUeyQSRxEOalZLcgFGblQUV-lOQQzBaelZhdgHpqS8OCfjjEdSUVujkr7AV4zg/exec"
-# Showreel da home (ex.: /assets/video/showreel.mp4). Vazio = animação da logo em loop no lugar.
-showreel: ""
+# Showreel do primeiro painel da home: 16:9 no desktop, 9:16 no celular (até 768 px).
+# Com "reduzir movimento" ativado no sistema, aparece só a imagem de capa (poster).
+# Apagar o bloco (ou deixar showreel: "") volta para a animação da logo em loop.
+showreel:
+  desktop: /assets/video/showreel-16x9.mp4
+  mobile: /assets/video/showreel-9x16.mp4
+  poster_desktop: /assets/video/showreel-16x9-poster.jpg
+  poster_mobile: /assets/video/showreel-9x16-poster.jpg
 social:
   - { name: Instagram, icon: instagram, url: "https://www.instagram.com/igormarques.art/" }
   - { name: YouTube, icon: youtube, url: "https://www.youtube.com/channel/UCK0DU-8l--nYUBPN0Cq0PiA" }

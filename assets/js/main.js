@@ -22,7 +22,36 @@
     vids.forEach(function (v) { vio.observe(v); });
   }
 
-  /* ---------- primeiro painel: animação da logo em loop (até o showreel ficar pronto) ---------- */
+  /* ---------- primeiro painel: showreel (16:9 no desktop, 9:16 no celular) ---------- */
+  var reel = document.querySelector('[data-showreel]');
+  if (reel) {
+    var mqMobile = window.matchMedia('(max-width: 768px)');
+    var reelOn = false, reelVisible = true;
+    var reelPlay = function () { if (reelOn && reelVisible) { var pr = reel.play(); if (pr && pr.catch) pr.catch(function () {}); } };
+    var pickReel = function () {
+      var m = mqMobile.matches;
+      reel.poster = m ? reel.dataset.posterMobile : reel.dataset.posterDesktop;
+      if (reduce) return;                                  // reduzir movimento: fica só a imagem de capa
+      var src = m ? reel.dataset.srcMobile : reel.dataset.srcDesktop;
+      if (reel.getAttribute('src') !== src) { reel.setAttribute('src', src); reel.load(); reelPlay(); }
+    };
+    pickReel();
+    if (mqMobile.addEventListener) mqMobile.addEventListener('change', pickReel); else mqMobile.addListener(pickReel);
+    if (!reduce) {
+      reel.preload = 'auto';
+      // começa do início quando a tela de carregamento sai; pausa fora da tela
+      var startReel = function () { reelOn = true; reel.currentTime = 0; reelPlay(); };
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) { reelVisible = e.isIntersecting; if (reelVisible) reelPlay(); else reel.pause(); });
+        }).observe(reel);
+      }
+      if (document.documentElement.classList.contains('is-loading')) document.addEventListener('loader:done', startReel, { once: true });
+      else startReel();
+    }
+  }
+
+  /* ---------- primeiro painel: animação da logo em loop (quando não há showreel) ---------- */
   var loopBox = document.querySelector('[data-logo-loop]');
   if (loopBox && window.IMALogo) {
     var loopAnim = window.IMALogo(loopBox, { onExit: function (ex) { loopBox.style.opacity = 1 - ex; } });

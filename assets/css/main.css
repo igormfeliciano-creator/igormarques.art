@@ -110,7 +110,9 @@ main { display: flex; flex-direction: column; gap: 10px; }
 .hero--reel { background: var(--surface-inverse); }
 .hero__logo { position: absolute; inset: 0; transition: opacity .3s; }
 .hero__logo svg { position: absolute; left: 50%; top: 50%; height: 86%; width: auto; aspect-ratio: 1; transform: translate(-50%, -50%); }
-.hero__video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* showreel: o fundo do vídeo é preto, então "contain" não corta os quadros e as sobras somem no painel preto */
+.hero--video { background: var(--color-black); }
+.hero__video { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* ---------- cards de projeto ---------- */
 .projects { padding: 48px 24px; }
