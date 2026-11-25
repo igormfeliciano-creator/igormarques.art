@@ -2,8 +2,9 @@
 url: https://igormarques.art
 # Endereço do Google Apps Script que recebe o formulário (preencher depois de implantar)
 form_endpoint: "https://script.google.com/macros/s/AKfycbxbSXvQoUeyQSRxEOalZLcgFGblQUV-lOQQzBaelZhdgHpqS8OCfjjEdSUVujkr7AV4zg/exec"
-# Métricas de visitas (GoatCounter, sem cookies). Coloque aqui o código da conta
-# (ex.: "igormarques" para igormarques.goatcounter.com). Vazio = desligado.
+# Métricas de visitas (GoatCounter, sem cookies). Desligado por decisão (nov/2026): a origem dos contatos
+# vem do campo "por onde você me conheceu?" do formulário. Para ligar no futuro, coloque o código da conta
+# (ex.: "igormarques" para igormarques.goatcounter.com). Vazio = desligado, nada é carregado no site.
 goatcounter: ""
 # Showreel do primeiro painel da home: 16:9 no desktop, 9:16 no celular (até 768 px).
 # Com "reduzir movimento" ativado no sistema, aparece só a imagem de capa (poster).
