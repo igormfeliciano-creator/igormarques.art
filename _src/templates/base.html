@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/tokens.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="{{ asset('/assets/css/tokens.css') }}">
+  <link rel="stylesheet" href="{{ asset('/assets/css/main.css') }}">
   <script>
     /* a loadscreen toca uma vez por visita (aba); quem já viu nesta aba vai direto ao conteúdo */
     try { if (sessionStorage.getItem('ima-loader')) document.documentElement.classList.add('no-loader'); } catch (e) {}
@@ -37,6 +37,6 @@
     {% include 'partials/footer.html' %}
   </div>
   {% if popup %}{% include 'partials/popup.html' %}{% endif %}
-  <script src="/assets/js/main.js" defer></script>
+  <script src="{{ asset('/assets/js/main.js') }}" defer></script>
 </body>
 </html>

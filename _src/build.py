@@ -28,6 +28,12 @@ def load(name):
         return yaml.safe_load(f)
 
 # ---------- logo (vetor redesenhado a partir do quadro final da loadscreen) ----------
+def asset(path):
+    """URL de um arquivo de /assets com ?v=<hash do conteúdo>: muda só quando o arquivo muda (evita cache antigo)."""
+    import hashlib
+    h = hashlib.md5((ROOT / path.lstrip('/')).read_bytes()).hexdigest()[:8]
+    return f"{path}?v={h}"
+
 def logo_path():
     """Mesmo desenho da animação, coordenadas com origem no canto do ponto."""
     ox, oy = 594, 867
@@ -175,7 +181,7 @@ def main():
     env = Environment(loader=FileSystemLoader(SRC / 'templates'), autoescape=select_autoescape(['html']),
                       trim_blocks=True, lstrip_blocks=True)
     env.globals.update(image_ratio=lambda n: round(image_meta()[n]['w'] / image_meta()[n]['h'], 4) if n in image_meta() else 1,
-                       icon=icon, logo_svg=logo_svg, picture=picture, site=site, projects=projects)
+                       icon=icon, asset=asset, logo_svg=logo_svg, picture=picture, site=site, projects=projects)
     for tpl, pt_path, en_path, extra in pages(projects, strings):
         for lang, path in (('pt', pt_path), ('en', en_path)):
             prefix = '/' if lang == 'pt' else '/en/'
