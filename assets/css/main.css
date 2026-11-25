@@ -114,6 +114,19 @@ main { display: flex; flex-direction: column; gap: 10px; }
 .hero--video { background: var(--color-black); }
 .hero__video { width: 100%; height: 100%; object-fit: contain; display: block; }
 
+/* ---------- página 404 ---------- */
+.notfound { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; text-align: center;
+  height: 800px; padding: 48px 24px; border-radius: var(--radius-lg); background: var(--surface-inverse); color: var(--text-inverse); }
+.notfound__logo { width: 160px; height: auto; }
+.notfound h1 { margin: 16px 0 0; font-size: var(--fs-card); font-weight: 600; }
+.notfound p { margin: 0; max-width: 460px; color: var(--text-inverse-secondary); }
+.notfound__en { font-size: var(--fs-body-sm); }
+.notfound__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px; }
+.notfound .botao-primario { background: var(--surface-page); color: var(--text-primary); }
+.notfound .botao-primario:hover { background: var(--color-gray-50); }
+.notfound .botao-primario--ghost { background: transparent; color: var(--text-inverse); border: 1px solid currentColor; }
+.notfound .botao-primario--ghost:hover { background: rgba(255,255,255,.08); }
+
 /* ---------- cards de projeto ---------- */
 .projects { padding: 48px 24px; }
 .projects__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -367,6 +380,8 @@ main { display: flex; flex-direction: column; gap: 10px; }
   .navbar__inner { position: relative; }
 
   .hero { height: 479px; }
+  .notfound { height: auto; min-height: 479px; padding: 48px 24px; }
+  .notfound__logo { width: 120px; }
   .projects { padding: 12px; }
   .projects__grid { grid-template-columns: 1fr; }
   .project-card__thumbs { display: none; }

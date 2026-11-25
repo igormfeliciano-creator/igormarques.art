@@ -193,6 +193,29 @@ def main():
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(html, encoding='utf-8')
             print('page', out.relative_to(ROOT))
+
+    # página de erro: o GitHub Pages usa /404.html para qualquer endereço que não existe (PT, com uma linha em inglês)
+    ctx = dict(lang='pt', t=strings['pt'], t_en=strings['en'], prefix='/', path='404.html', alt_pt='/', alt_en='/en/',
+               popup=None, page='404', page_title=strings['pt']['not_found']['title'], page_description=None)
+    (ROOT / '404.html').write_text(env.get_template('404.html').render(**ctx), encoding='utf-8')
+    print('page 404.html')
+
+    # mapa do site para o Google (com as versões PT/EN ligadas) e robots.txt
+    from datetime import date
+    today = date.today().isoformat()
+    urls = []
+    for _, pt_path, en_path, _ in pages(projects, strings):
+        alts = (f'    <xhtml:link rel="alternate" hreflang="pt-BR" href="{site["url"]}/{pt_path}"/>\n'
+                f'    <xhtml:link rel="alternate" hreflang="en" href="{site["url"]}/{en_path}"/>\n'
+                f'    <xhtml:link rel="alternate" hreflang="x-default" href="{site["url"]}/{pt_path}"/>\n')
+        for path in (pt_path, en_path):
+            urls.append(f'  <url>\n    <loc>{site["url"]}/{path}</loc>\n    <lastmod>{today}</lastmod>\n{alts}  </url>')
+    (ROOT / 'sitemap.xml').write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+        + '\n'.join(urls) + '\n</urlset>\n', encoding='utf-8')
+    (ROOT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {site["url"]}/sitemap.xml\n', encoding='utf-8')
+    print('sitemap.xml, robots.txt')
     (ROOT / '.nojekyll').write_text('')
 
 if __name__ == '__main__':

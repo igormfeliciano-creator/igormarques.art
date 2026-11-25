@@ -2,6 +2,12 @@ lang_attr: en
 meta:
   title: Igor Marques Art — Brand designer
   description: Complete visual identities for businesses that want to be remembered. Portfolio of Igor Marques, brand designer and illustrator based in Belo Horizonte, Brazil.
+  og_image_alt: Bento with projects by Igor Marques — Zoppy, Além da Marca, LibCode and O Plano Perfeito Black Friday
+not_found:
+  title: Page not found
+  text: The address may have changed or been mistyped. The projects are still here.
+  home: Go to home
+  projects: See projects
 nav:
   projects: Projects
   about: About me

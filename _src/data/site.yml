@@ -2,6 +2,9 @@
 url: https://igormarques.art
 # Endereço do Google Apps Script que recebe o formulário (preencher depois de implantar)
 form_endpoint: "https://script.google.com/macros/s/AKfycbxbSXvQoUeyQSRxEOalZLcgFGblQUV-lOQQzBaelZhdgHpqS8OCfjjEdSUVujkr7AV4zg/exec"
+# Métricas de visitas (GoatCounter, sem cookies). Coloque aqui o código da conta
+# (ex.: "igormarques" para igormarques.goatcounter.com). Vazio = desligado.
+goatcounter: ""
 # Showreel do primeiro painel da home: 16:9 no desktop, 9:16 no celular (até 768 px).
 # Com "reduzir movimento" ativado no sistema, aparece só a imagem de capa (poster).
 # Apagar o bloco (ou deixar showreel: "") volta para a animação da logo em loop.

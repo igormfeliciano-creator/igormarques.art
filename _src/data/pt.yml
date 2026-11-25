@@ -2,6 +2,12 @@ lang_attr: pt-BR
 meta:
   title: Igor Marques Art — Designer de marcas
   description: Identidades visuais completas para negócios que querem ser lembrados. Portfólio de Igor Marques, designer de marcas e ilustrador em Belo Horizonte.
+  og_image_alt: Bento com projetos de Igor Marques — Zoppy, Além da Marca, LibCode e O Plano Perfeito Black Friday
+not_found:
+  title: Página não encontrada
+  text: O endereço pode ter mudado ou estar digitado errado. Os projetos continuam aqui.
+  home: Ir para o início
+  projects: Ver projetos
 nav:
   projects: Projetos
   about: Sobre mim

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{#- Página de erro do GitHub Pages: serve para qualquer endereço que não existe (PT e EN). -#}
+{% block content %}
+<section class="notfound">
+  {{ logo_svg('notfound__logo') }}
+  <h1>{{ t.not_found.title }}</h1>
+  <p>{{ t.not_found.text }}</p>
+  <p class="notfound__en" lang="en">{{ t_en.not_found.title }} — {{ t_en.not_found.text }}</p>
+  <div class="notfound__actions">
+    <a class="botao-primario botao-primario--auto" href="/"><span>{{ t.not_found.home }}</span>{{ icon('seta-direita') }}</a>
+    <a class="botao-primario botao-primario--auto botao-primario--ghost" href="/projetos/"><span>{{ t.not_found.projects }}</span>{{ icon('seta-direita') }}</a>
+  </div>
+</section>
+{% endblock %}
